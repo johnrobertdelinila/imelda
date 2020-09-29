@@ -60,7 +60,7 @@ $sql =   mysqli_query($conn,"SELECT * FROM `brgy_official_detail` bod
 INNER JOIN resident_detail rd ON rd.res_ID = bod.res_ID
 LEFT JOIN ref_suffixname rs ON rs.suffix_ID = rd.suffix_ID
 LEFT JOIN ref_position rp ON rp.position_ID = bod.commitee_assignID
-WHERE bod. commitee_assignID = 2 AND visibility = 1");
+WHERE bod.commitee_assignID = 2 AND visibility = 1");
 $cap_data = mysqli_fetch_array($sql);
 $cap_data['res_Img'];
 $suffix = $cap_data['suffix'];
