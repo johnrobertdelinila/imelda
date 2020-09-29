@@ -1,0 +1,14 @@
+# BMIS-v2
+- [x] Account Module Done
+- [x] Barangay Official Done
+- [ ] Session Fix
+- [ ] Clearance_and_Forms
+- [x] Communication Design
+- [ ] Finance
+- [x] Health_and_Sanitation Design
+- [ ] Health_and_Sanitation Function
+- [ ] Resident Profiling Action 
+- [x] Peace_and_Order Bug Fix
+- [ ] Applying Fix 
+- [ ] Report Design
+- [ ] Special_ProjectsDesign

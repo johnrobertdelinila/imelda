@@ -1,0 +1,24 @@
+Version 2.0 (February 2018)
+----------------------------
+
+- Ability to create diagrams of any type and stylize them
+- Variety of shapes and connectors
+- Export to PDF and PNG formats
+
+[See the full list of updates](https://docs.dhtmlx.com/diagram/whats_new.html#version20)
+
+Version 1.1 (December 2017)
+----------------------------
+
+- Ability to save and restore the state
+- Extended customization possibilities
+
+Version 1.0 (September 2017)
+----------------------------
+
+- Organogram mode
+- Vertical and horizontal autoplacement strategies
+- Loading data from JSON
+- API to manage data and branch state
+
+

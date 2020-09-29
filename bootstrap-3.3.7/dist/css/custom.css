@@ -1,0 +1,47 @@
+        body { 
+  background: url(../../../Img/bg.png) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  transition-timing-function: ease-in-out;
+}
+
+
+.panel-default {
+/*	0.9*/
+opacity: 100;
+margin-top:200px;
+}
+.form-group.last { margin-bottom:0px; }
+#btndark{
+	background-color: #2d2d2d;
+	color: white;
+}
+
+
+.navbar-default .navbar-collapse, .navbar-default .navbar-form {
+    border-color: #2e4a62;
+}
+.navbar-default .navbar-brand {
+    color: white !important;
+}
+.navbar-default{background-color: #2e4a62;
+	color: white !important;
+
+}
+.navbar-default .navbar-nav>li>a {
+     background-color: #2e4a62;
+      color: white !important;
+    
+}
+.navbar-default .navbar-nav>.active>a{
+	background-color: #14aa6c;
+}
+.navbar-default:hover .navbar-nav:hover>li>a:hover {
+     background-color: #14aa6c;
+      color: white !important;
+    
+}
+/*14aa6c green*/ 
+

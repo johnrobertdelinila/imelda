@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Live organogram edit</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script type="text/javascript" src="../../codebase/diagram-editor.js"></script>
+	<link rel="stylesheet" href="../../codebase/diagram-editor.css">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:400,500" rel="stylesheet">
+
+	<script type="text/javascript" src="../common/data.js"></script>
+	<style>
+		html, body {
+			height: 100%;
+			margin: 0;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="diagram_wrapper" style='height:100%;'>
+		<div id="cont" style="height:100%"></div>
+		<button class="dhx_btn dhx_btn--active" style="position:fixed;top:0;left:0;margin:10px;" id="edit" onclick="runEditor()">Edit</button>
+	</div>
+	<div id="editor_wrapper" style="height:100%">
+
+	</div>
+
+	<script>
+		var diagram = new dhx.Diagram("cont", { type: "org" });
+		var editor = new dhx.DiagramEditor("editor_wrapper", { type: "org" });
+		diagram.data.parse(smallOrganogramData);
+
+		var editorCont = document.querySelector("#editor_wrapper");
+		var diagramCont = document.querySelector("#diagram_wrapper");
+		editorCont.style.display = "none";
+
+		function runEditor() {
+			diagramCont.style.display = "none";
+			editorCont.style.display = "block";
+			editor.import(diagram);
+			editor.events.on("ApplyButton", function () {
+				diagramCont.style.display = "block";
+				editorCont.style.display = "none";
+				diagram.data.parse(editor.serialize());
+			});
+			editor.events.on("ResetButton", function () {
+				diagramCont.style.display = "block";
+				editorCont.style.display = "none";
+			});
+		}
+	</script>
+</body>
+
+</html>
