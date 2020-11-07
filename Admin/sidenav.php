@@ -338,9 +338,9 @@ $user_data = mysqli_fetch_array($user_sql);
                     <li>
                         <a  href="Clearance_and_Forms/index" target = "FraDisplay">Clearance and Forms</a>
                     </li>
-                    <li>
+                    <!-- <li>
                         <a  href="Health_and_Sanitation/index" target = "FraDisplay">Health and Sanitation</a>
-                    </li>
+                    </li> -->
                     <li>
                         <a  href="Peace_and_Order/incident" target = "FraDisplay">Peace and Order</a>
                     </li>
@@ -348,7 +348,7 @@ $user_data = mysqli_fetch_array($user_sql);
                         <a  href="Finance/index" target = "FraDisplay">Finance</a>
                     </li>
                     <li>
-                        <a  href="Resident_Profiling/resident" target = "FraDisplay">Resident Porfiling</a>
+                        <a  href="Resident_Profiling/resident" target = "FraDisplay">Resident Profiling</a>
                     </li>
                     <li>
                         <a href="communication/index" target = "FraDisplay">Announcement</a>

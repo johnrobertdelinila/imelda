@@ -53,7 +53,7 @@ $s3="";
 
                           header("Location:Creator/CreateBusinessPermit.php?res_ID=$var_id&or=$var_or&ctc=$var_crc");
                         }
-                        else if($var_forms=="Certificate of Indigency" || $var_forms=="Indigency"){
+                        else if($var_forms=="Certificate of Residency" || $var_forms=="Indigency"){
                           header("Location:Clearances/CertificateOfIndigency.php?res_ID=$var_id&or=$var_or&crc=$var_crc");
                         }
                         else if($var_forms=="Barangay Logging" || $var_forms=="Logging Permit" ||$var_forms=="Logging" || $var_forms=="Tree Cutting" || $var_forms=="Cutting Trees"){

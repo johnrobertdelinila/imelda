@@ -42,7 +42,8 @@ include("../../connection.php");
   <?php 
 
   
-$sql = mysqli_query($conn,"SELECT ua.acc_ID,bod.official_ID,rd.res_fName,rd.res_mName,rd.res_lName,rs.suffix,ua.acc_username,ua.acc_password,us.status_Name,us.status_ID,rp.position_Name FROM `user_account` ua 
+$sql = mysqli_query($conn,"SELECT ua.acc_ID,bod.official_ID,rd.res_fName,rd.res_mName,rd.res_lName,rs.suffix,ua.acc_username,ua.acc_password,us.status_Name,us.status_ID,rp.position_Name 
+FROM `user_account` ua 
 LEFT JOIN brgy_official_detail bod ON ua.official_ID = bod.official_ID 
 LEFT JOIN resident_detail rd ON bod.res_ID = rd.res_ID 
 LEFT JOIN ref_position rp ON rp.position_ID = ua.position_ID

@@ -32,15 +32,16 @@ if(isset($_POST['submit-account']))
 		 	 	$pos = $position;
 			}
 			$new_password = password_hash($conpassword, PASSWORD_DEFAULT);
-			$sql = mysqli_query($conn,"INSERT INTO 
-				`user_account` (`acc_ID`,`official_ID`,`position_ID`,`acc_username`,`acc_password`,`status_ID`,`acc_created`) VALUES (
-				NULL,
-				 '$official_ID',
-				  '$pos',
-				   '$username',
-				    '$new_password',
-				     '1',
-				      CURRENT_TIMESTAMP)");
+			$que = "INSERT INTO 
+			`user_account` (`acc_ID`,`official_ID`,`position_ID`,`acc_username`,`acc_password`,`status_ID`,`acc_created`) VALUES (
+			NULL,
+			 '$official_ID',
+			  '$pos',
+			   '$username',
+				'$new_password',
+				 '1',
+				  CURRENT_TIMESTAMP)";
+			$sql = mysqli_query($conn, $que);
 			echo "<script>alert('Successfully Add New Account!');
 	                                    window.location='index';
 	                                </script>"; 

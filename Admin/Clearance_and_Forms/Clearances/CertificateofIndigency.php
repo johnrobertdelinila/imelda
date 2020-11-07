@@ -347,7 +347,7 @@ $sqlsli = "INSERT INTO form_release (res_ID, form_ID, purpose_ID, release_date)
 <!DOCTYPE>
 <html>
   <header>
-    <title>Certificate of Indigency</title>
+    <title>Certificate of Residency</title>
     <meta http-equiv="Content-Type" content ="text/html"; charset="utf-8" />
     <script type="text/javascript" src="../js/jspdf.min.js"></script>
     <script type="text/javascript" src="../js/html2canvas.js"></script>
@@ -393,7 +393,7 @@ $sqlsli = "INSERT INTO form_release (res_ID, form_ID, purpose_ID, release_date)
         OFFICE OF THE BARANGAY HEAD
       </div>
       <div class="header tag1">
-        CERTIFICATE OF INDIGENCY
+        Certificate of Residency
       </div>
         <div class="c-wrapper">
           <div class="officials center">
@@ -474,10 +474,10 @@ $sqlsli = "INSERT INTO form_release (res_ID, form_ID, purpose_ID, release_date)
               <span id="name-input"><?php echo "AGE";?></span> years old <span id="name-input"><?php echo $civilStatus;?></span>
               and residing at <span id="name-input"><?php echo $houseNo." ".$street_Name.","." "."phase".$phase_No." ".$subd_Name;?></span>
               <span id="name-input"><?php echo $head_brgy_Name." ".$citymun_disp.","." ".$province_disp;?></span>
-              is known to be a person of good moral character and law abiding citizen.
+              is a bonafide resident of this barangay
               <br><br>
 
-              &emsp;&emsp;&emsp;Certify further that he / she is one among our indigent citizen without source of income or scarce income.
+              &emsp;&emsp;&emsp;This certification is issued upon the request of the above-named person for whatever purposes it may serve
             <br><br>
 
               &emsp;&emsp;&emsp;Issued this <span id="name-input"><?php echo $datedate?></span> at <span id="name-input"><?php echo $head_brgy_Name." ".$citymun_disp.","." ".$province_disp;?></span>.

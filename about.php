@@ -49,7 +49,7 @@
                     <form class="form-horizontal" >
                     <div class="form-group last">
                         <div class="text-center" style="padding: 5px;">
-                            <img src="Img/indang1.jpg"  height="105" width="201">
+                            <img src="Img/about.jpg"  height="105" width="201">
                             <h4>Bgy. Management Information System</h4>
                             <h5>is a computerized information-processing system</h5>
                             <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#bmis">READ MORE</button>
@@ -68,7 +68,7 @@
                     <form class="form-horizontal" >
                     <div class="form-group last">
                         <div class="text-center" style="padding: 5px;">
-                            <img src="Img/indang1.jpg"  height="105" width="201">
+                            <img src="Img/about.jpg"  height="105" width="201">
                             <h4>Mission and Vision of Imelda Naguilian</h4>
                             <h5>Mission: Enhance the quality of life of the people by providing adequate basic social services in an...</h5>
                             <button  type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#mv">READ MORE</button>
@@ -87,7 +87,7 @@
                     <form class="form-horizontal" >
                     <div class="form-group last">
                         <div class="text-center" style="padding: 5px;">
-                            <img src="Img/indang1.jpg"  height="105" width="201">
+                            <img src="Img/about.jpg"  height="105" width="201">
                             <h4>Municipal Profile</h4>
                             <h5>REGION : I PROVINCE : NAGUILIAN CONGRESSIONAL DISTRICT: 2nd MUNICIPALITY : IMELDA ...</h5>
                             <button  type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#inprofile">READ MORE</button>

@@ -31,7 +31,6 @@ if(isset($_SESSION['user_session']))
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <!-- This file has been downloaded from Bootsnipp.com. Enjoy! -->
     <title>Home - Barangay Management Information System</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="bootstrap-3.3.7/dist/css/bootstrap.min.css">
