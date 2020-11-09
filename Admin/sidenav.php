@@ -353,9 +353,9 @@ $user_data = mysqli_fetch_array($user_sql);
                     <li>
                         <a href="communication/index" target = "FraDisplay">Announcement</a>
                     </li>
-                    <li>
+                    <!-- <li>
                         <a  href="Special_Projects/index" target = "FraDisplay">Special Project</a>
-                    </li>
+                    </li> -->
                     <li>
                         <a  href="Barangay_Officials/index" target = "FraDisplay">Barangay Official</a>
                     </li>

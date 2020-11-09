@@ -144,7 +144,8 @@ class allfunctions extends database{
             $query2 = "UPDATE ms_incident_offender  SET res_ID = null ,offender_name = '".$data['offender_name']."', offender_gender = '".$data['offender_gender']."', offender_address = '".$data['offender_address']."', description = '".$data['offender_description']."', complainantType_ID = '".$data['complianantTypeOffender']."'  WHERE incident_id = '".$data['id']."' ";
             $this->db->update($query2);
         }else{
-            $query2 = "UPDATE ms_incident_offender  SET offender_name = null, offender_gender = null, offender_address = null, res_ID = '".$data['resident_idOffender']."', description = '".$data['offender_description']."', complainantType_ID = '".$data['complianantTypeOffender']."'  WHERE incident_id = '".$data['id']."' ";
+            // res_ID = '".$data['resident_idOffender']."',
+            $query2 = "UPDATE ms_incident_offender  SET offender_name = null, offender_gender = null, offender_address = null, `description` = '".$data['offender_description']."', complainantType_ID = '".$data['complianantTypeOffender']."'  WHERE incident_id = '".$data['id']."' ";
             $this->db->update($query2);
         }
 
