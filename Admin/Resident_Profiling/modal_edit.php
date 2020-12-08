@@ -11,17 +11,21 @@ rc.country_nationality,
 rc.country_citizenship,
 ro.occupation_Name,
 ros.occuStat_Name,
-rd.res_Date_Record FROM resident_detail rd 
+rd.res_Date_Record,
+rsc.*,
+rad.* FROM resident_detail rd 
 LEFT JOIN ref_suffixname sfx ON rd.suffix_ID = sfx.suffix_ID 
 LEFT JOIN ref_marital_status rms ON rd.marital_ID = rms.marital_ID 
 LEFT JOIN ref_gender rg ON rd.gender_ID = rg.gender_ID 
 LEFT JOIN ref_religion rr ON rd.religion_ID = rr.religion_ID 
 LEFT JOIN ref_occupation ro ON rd.occupation_ID = ro.occupation_ID 
 LEFT JOIN ref_occupation_status ros ON rd.occuStat_ID = ros.occuStat_ID 
+LEFT JOIN resident_contact rsc ON rsc.res_ID = rd.res_ID
+LEFT JOIN resident_address rad ON rad.res_ID = rd.res_ID
 LEFT JOIN ref_country rc ON rd.country_ID = rc.country_ID  WHERE rd.res_ID = $id");
-$resident = mysqli_fetch_array($sql)
+$resident = mysqli_fetch_array($sql);
 ?>
-<form method="POST" runat="server" action="action" enctype="multipart/form-data" >
+<form method="POST" runat="server" action="action.php" enctype="multipart/form-data" >
 
     <div class="modal-body">
         <div class="col-lg-offset-4" id="image-holder">
@@ -105,7 +109,7 @@ $resident = mysqli_fetch_array($sql)
         while ($row=mysqli_fetch_array($res))
         {
           ?>
-                    <option>
+                    <option value="<?php echo $row["gender_ID"];?>" <?php echo ($row["gender_ID"] == $resident[10] ? 'selected' : '') ?>>
                         <?php echo $row["gender_Name"];?>
                     </option>
 
@@ -118,7 +122,7 @@ $resident = mysqli_fetch_array($sql)
 
         <div class="form-group col-md-4">
             <label for="res_bdate">Birthdate</label>
-            <input placeholder="Birthdate" class="form-control" type="text" onfocus="(this.type='date')" onblur="getAge();" id="res_bdate" name="res_bdate">
+            <input placeholder="Birthdate" value="<?php echo $resident[7] ?>" class="form-control" type="text" onfocus="(this.type='date')" onblur="getAge();" id="res_bdate" name="res_bdate">
             <!-- onblur="(this.type='text')" -->
         </div>
 <!-- 
@@ -136,7 +140,7 @@ $resident = mysqli_fetch_array($sql)
         while ($row=mysqli_fetch_array($res))
         {
           ?>
-                    <option>
+                    <option value="<?php echo $row["marital_ID"];?>" <?php echo ($row['marital_ID'] == $resident[8] ? 'selected' : '') ?>>
                         <?php echo $row["marital_Name"];?>
                     </option>
 
@@ -149,7 +153,7 @@ $resident = mysqli_fetch_array($sql)
 
         <div class="form-group col-md-4">
             <label for="res_contactnum">Contact</label>
-            <input type="text" maxlength="11" class="form-control" id="res_contactnum" name="res_contactnum" onkeyup="numbersOnly(this)" placeholder="Contact number">
+            <input type="text" value="<?php echo $resident[28] ?>" maxlength="11" class="form-control" id="res_contactnum" name="res_contactnum" onkeyup="numbersOnly(this)" placeholder="Contact number">
         </div>
 
         <div class="form-group col-md-4">
@@ -161,7 +165,7 @@ $resident = mysqli_fetch_array($sql)
         while ($row=mysqli_fetch_array($res))
         {
           ?>
-                    <option>
+                    <option value="<?php echo $row['contactType_ID'] ?>" <?php echo ($row['contactType_ID'] == $resident['contactType_ID'] ? 'selected' : '') ?>>
                         <?php echo $row["contactType_Name"];?>
                     </option>
 
@@ -174,12 +178,12 @@ $resident = mysqli_fetch_array($sql)
 
         <div class="form-group col-md-4">
             <label for="res_mname">Height</label>
-            <input type="number" class="form-control" id="res_height" name="res_height" placeholder="Meter/Centimeter">
+            <input type="number" value="<?php echo $resident[16] ?>" class="form-control" id="res_height" name="res_height" placeholder="Meter/Centimeter">
         </div>
 
         <div class="form-group col-md-4">
             <label for="res_mname">Weight</label>
-            <input type="number" class="form-control" id="res_weight" name="res_weight" placeholder="Kilogram">
+            <input type="number" value="<?php echo $resident[17] ?>" class="form-control" id="res_weight" name="res_weight" placeholder="Kilogram">
         </div>
 
         <div class="form-group col-md-4">
@@ -191,7 +195,7 @@ $resident = mysqli_fetch_array($sql)
         while ($row=mysqli_fetch_array($res))
         {
           ?>
-                    <option>
+                    <option value="<?php echo $row['country_citizenship'] ?>" <?php echo ($row['country_citizenship'] == $resident['country_citizenship'] ? 'selected' : '') ?>>
                         <?php echo $row["country_citizenship"];?>
                     </option>
 
@@ -211,12 +215,11 @@ $resident = mysqli_fetch_array($sql)
           $res=mysqli_query($conn,"SELECT * FROM ref_religion");
         while ($row=mysqli_fetch_array($res))
         {
-          ?>
-                    <option>
-                        <?php echo $row["religion_Name"];?>
-                    </option>
-
-                    <?php
+            ?>
+                <option value="<?php echo $row['religion_ID'] ?>" <?php echo ($row['religion_ID'] == $resident['religion_ID'] ? 'selected' : '') ?>>
+                    <?php echo $row["religion_Name"];?>
+                </option>
+            <?php
         }
 
         ?>
@@ -234,7 +237,7 @@ $resident = mysqli_fetch_array($sql)
         while ($row=mysqli_fetch_array($res))
         {
           ?>
-                    <option>
+                    <option value="<?php echo $row['occuStat_Name'] ?>" <?php echo ($row['occuStat_Name'] == $resident['occuStat_Name'] ? 'selected' : '') ?>>
                         <?php echo $row["occuStat_Name"];?>
                     </option>
 
@@ -253,12 +256,12 @@ $resident = mysqli_fetch_array($sql)
           $res=mysqli_query($conn,"SELECT * FROM ref_occupation");
         while ($row=mysqli_fetch_array($res))
         {
-          ?>
-                    <option>
-                        <?php echo $row["occupation_Name"];?>
-                    </option>
+            ?>
+                <option value="<?php echo $row['occupation_Name'] ?>" <?php echo ($row['occupation_Name'] == $resident['occupation_Name'] ? 'selected' : '') ?>>
+                    <?php echo $row["occupation_Name"];?>
+                </option>
 
-                    <?php
+            <?php
         }
 
         ?>
@@ -275,42 +278,42 @@ $resident = mysqli_fetch_array($sql)
 
         <div class="form-group col-md-4">
             <label for="res_unit">Unit-Room-Floor</label>
-            <input type="text" maxlength="20" class="form-control" id="res_unit" name="res_unit" placeholder="Unit-Room-Floor">
+            <input type="text" maxlength="20" value="<?php echo $resident['address_Unit_Room_Floor_num'] ?>" class="form-control" id="res_unit" name="res_unit" placeholder="Unit-Room-Floor">
         </div>
 
         <div class="form-group col-md-4">
             <label for="res_building">Building name</label>
-            <input type="text" maxlength="15" class="form-control" id="res_building" name="res_building" placeholder="Building name">
+            <input type="text" value="<?php echo $resident['address_BuildingName'] ?>" maxlength="15" class="form-control" id="res_building" name="res_building" placeholder="Building name">
         </div>
 
         <div class="form-group col-md-4">
             <label for="res_lot">Lot</label>
-            <input type="text" maxlength="15" class="form-control" id="res_lot" name="res_lot" placeholder="Lot">
+            <input type="text" value="<?php echo $resident['address_Lot_No'] ?>" maxlength="15" class="form-control" id="res_lot" name="res_lot" placeholder="Lot">
         </div>
 
         <div class="form-group col-md-4">
             <label for="res_block">Block</label>
-            <input type="text" maxlength="15" class="form-control" id="res_block" name="res_block" placeholder="Block">
+            <input type="text" value="<?php echo $resident['address_Block_No'] ?>" maxlength="15" class="form-control" id="res_block" name="res_block" placeholder="Block">
         </div>
 
         <div class="form-group col-md-4">
             <label for="res_phase">Phase</label>
-            <input type="text" maxlength="15" class="form-control" id="res_phase" name="res_phase" placeholder="Phase">
+            <input type="text" value="<?php echo $resident['address_Phase_No'] ?>" maxlength="15" class="form-control" id="res_phase" name="res_phase" placeholder="Phase">
         </div>
 
         <div class="form-group col-md-4">
             <label for="res_houseno">House number</label>
-            <input type="text" maxlength="15" class="form-control" id="res_houseno" name="res_houseno" placeholder="House number">
+            <input type="text" maxlength="15" value="<?php echo $resident['address_House_No'] ?>" class="form-control" id="res_houseno" name="res_houseno" placeholder="House number">
         </div>
 
         <div class="form-group col-md-4">
             <label for="res_street">Street</label>
-            <input type="text" maxlength="15" class="form-control" id="res_street" name="res_street" placeholder="Street">
+            <input type="text" value="<?php echo $resident['address_Street_Name'] ?>" maxlength="15" class="form-control" id="res_street" name="res_street" placeholder="Street">
         </div>
 
         <div class="form-group col-md-4">
             <label for="res_subdmname">Subdivision</label>
-            <input type="text" maxlength="20" class="form-control" id="res_subd" name="res_subd" placeholder="Subdivision">
+            <input type="text" value="<?php echo $resident['address_Subdivision'] ?>" maxlength="20" class="form-control" id="res_subd" name="res_subd" placeholder="Subdivision">
         </div>
 
         <div class="form-group col-md-4">
@@ -321,12 +324,11 @@ $resident = mysqli_fetch_array($sql)
           $res=mysqli_query($conn,"SELECT * FROM ref_purok");
         while ($row=mysqli_fetch_array($res))
         {
-          ?>
-                    <option>
-                        <?php echo $row["purok_Name"];?>
-                    </option>
-
-                    <?php
+            ?>
+                <option value="<?php echo $row['purok_ID'] ?>" <?php echo ($row['purok_ID'] == $resident['purok_ID'] ? 'selected' : '') ?>>
+                    <?php echo $row["purok_Name"];?>
+                </option>
+            <?php
         }
 
         ?>
@@ -342,7 +344,7 @@ $resident = mysqli_fetch_array($sql)
         while ($row=mysqli_fetch_array($res))
         {
           ?>
-                    <option>
+                    <option value="<?php echo $row['addressType_ID'] ?>" <?php echo ($row['addressType_ID'] == $resident['addressType_ID'] ? 'selected' : '') ?>>
                         <?php echo $row["addressType_Name"];?>
                     </option>
 
@@ -363,8 +365,10 @@ $resident = mysqli_fetch_array($sql)
             &nbsp;&nbsp;
             <p>
                 <center>
-                    <a href="profile.php">
-                        <input type="submit" name="Update" id="" value="Update-resident" class="btn btn-info" /> </a>
+                    <!-- <a href="profile.php">
+                        <input type="submit" name="Update" id="" value="Update-resident" class="btn btn-info" /> 
+                    </a> -->
+                    <input type="submit" name="Update" id="" value="Update-resident" class="btn btn-info" />
                 </center>
             </p>
 

@@ -175,10 +175,10 @@ input[type=password]:focus {
 
 </style>
 <body>
-<div class="label">Dashboard / Peace & Order /File blotter/incident case
+<div class="label">Dashboard / Blotter /File blotter/incident case
 </div>
 <div class="nav">
-	<a href="opening.php">Peace & Order</a>
+	<a href="opening.php">Blotter</a>
 	<a href="fileblotter.php">File blotter/incident case  </a>
 	<a href="view.php">View blotter/incident case  </a>
 	
@@ -187,7 +187,7 @@ input[type=password]:focus {
 <div class="jumbotron w3-animate-zoom">
 <center>
     <h1><font size="7">Welcome</h1></font>
-	<h2><font size="6"> Barangay Peace & Order</h2></font>
+	<h2><font size="6"> Barangay Blotter</h2></font>
     <p><font size="5">If you have any blotter or incident case you want to file, you can add here.</p></font>
   </div>
 </div>

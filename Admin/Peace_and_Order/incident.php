@@ -6,7 +6,7 @@
             <div class="" style="padding: 0px 15px;">
                 <div class="card">
                     <div class="card-header">
-                        <h5>PEACE & ORDER (List of Incident) <a class="btn btn-primary btn-sm float-right" href="add_blotter.php">New Incident Report</a></h5>     
+                        <h5>Blotter (List of Incident) <a class="btn btn-primary btn-sm float-right" href="add_blotter.php">New Incident Report</a></h5>     
                                               
                     </div>
                     <div class="card-body">

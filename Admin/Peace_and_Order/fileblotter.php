@@ -21,7 +21,8 @@ body {
 	margin-left:1%;
 	margin-top:1%;
 	margin-right:1%;
-	border: none;
+	border: none;
+
 	width:98%;
 	position: relative;
 	overflow: hidden;
@@ -162,10 +163,10 @@ input[type=password]:focus {
 }
 </style>
 <body>
-<div class="label">Dashboard / Peace & Order /File blotter/incident case
+<div class="label">Dashboard / Blotter /File blotter/incident case
 </div>
 <div class="nav">
-	<a href="opening.php">Peace & Order</a>
+	<a href="opening.php">Blotter</a>
 	<a href="fileblotter.php">File blotter/incident case  </a>
 	<a href="view.php">View blotter/incident case  </a>
 </div>
@@ -177,7 +178,7 @@ input[type=password]:focus {
 		<form method="POST">
 		<div id="content-wrapper" class="content-wrapper">
     <section class="content-header">
-  <h5><font size="5">PEACE & ORDER (Add Incident) </h5></font>
+  <h5><font size="5">Blotter (Add Incident) </h5></font>
     </section>
     <section class="content">
         <div class="row">

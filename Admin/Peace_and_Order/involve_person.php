@@ -120,7 +120,7 @@ if(isset($_GET['case']) && $_GET['case'] !== ""){
 
 <div id="content-wrapper" class="content-wrapper">
     <section class="content-header">
-  <h5>PEACE & ORDER (Involve Persons) <a class="btn btn-primary btn-sm float-right" href="Incident.php">Back</a></h5>     
+  <h5>Blotter (Involve Persons) <a class="btn btn-primary btn-sm float-right" href="Incident.php">Back</a></h5>     
     </section>
     <section class="content">
         <div class="row">

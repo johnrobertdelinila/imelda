@@ -23,7 +23,7 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="incident.php">
                         <i class="ti-shield" aria-hidden="true"></i>
-                        Peace and Order
+                        Blotter
                     </a>
                 </li>
             </ul>

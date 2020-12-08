@@ -172,7 +172,7 @@
 
 <div id="content-wrapper" class="content-wrapper">
     <section class="content-header">
-        <h4 class="text-uppercase">Peace and Order</h4>    
+        <h4 class="text-uppercase">Blotter</h4>    
     </section>
     <section class="content">
         <div class="row">

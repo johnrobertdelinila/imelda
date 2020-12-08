@@ -1,7 +1,7 @@
 <?php 
 
-if (isset($_POST['Update-resident'])) {
- $new_fname = $_POST["new_fname"];
+if (isset($_POST['Update'])) {
+ 	$new_fname = $_POST["new_fname"];
 	$new_mname = $_POST["new_mname"];
 	$new_lname = $_POST["new_lname"];
 	$new_suffix = $res_suffix;

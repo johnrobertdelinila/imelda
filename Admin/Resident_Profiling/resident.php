@@ -4,13 +4,14 @@ include("../../connection.php");
 
 <?php
 
-$largestNumber= $rid= "";
-                           $rowSQL = mysqli_query($conn, "SELECT MAX( res_ID ) AS max FROM `resident_detail`;" );
-                                  $row = mysqli_fetch_array( $rowSQL );
-                                  $largestNumber = $row['max'];
-                                    $rid= $largestNumber+1;
+$rid= "";
+$largestNumber = $rid;
+$rowSQL = mysqli_query($conn, "SELECT MAX( res_ID ) AS max FROM `resident_detail`;" );
+$row = mysqli_fetch_array( $rowSQL );
+$largestNumber = $row['max'];
+  $rid= $largestNumber+1;
 
-                                  ?>
+?>
 
                 <?php
 
@@ -232,30 +233,32 @@ if ($_SERVER["REQUEST_METHOD"]== "POST"){
              $res_address= $address;
         }
 
-if ($_SERVER["REQUEST_METHOD"]== "POST"){
+if ($_SERVER["REQUEST_METHOD"]== "POST" && !empty($_FILES["image"]["tmp_name"])){
  $file = addslashes(file_get_contents($_FILES["image"]["tmp_name"]));
+}else {
+  $file = null;
 }
 ?>
 
                             <?php
 
 If($rid &&$res_fname  && $res_lname && $res_suffix && $res_gender && $res_bdate && $res_civilstatus && $res_religion && $res_religion && $res_occupationstatus && $res_occupation && $res_height && $res_weight && $res_citizenship){
-
+  echo "<br><br><br><br>";
+  
         $query=mysqli_query($conn,"INSERT INTO resident_detail(res_ID,res_Img, 
-res_fName, res_mName,res_lName,suffix_ID, gender_ID, res_Bday, marital_ID,religion_ID,res_Height,res_Weight, occuStat_ID,occupation_ID,country_ID) VALUES('$rid','$file','$res_fname','$res_mname','$res_lname','$res_suffix','$res_gender','$res_bdate','$res_civilstatus','$res_religion','$res_height', '$res_weight','$res_occupationstatus','$res_occupation','$res_citizenship') ");
+res_fName, res_mName,res_lName,suffix_ID, gender_ID, res_Bday, marital_ID,religion_ID,res_Height,res_Weight, occuStat_ID,occupation_ID,country_ID,Status) VALUES('$rid','$file','$res_fname','$res_mname','$res_lname','$res_suffix','$res_gender','$res_bdate','$res_civilstatus','$res_religion','$res_height', '$res_weight','$res_occupationstatus','$res_occupation','$res_citizenship', 'Active') ");
+    
     echo "<script type='text/javascript'>alert('submitted successfully!')</script>";
 
         if ($res_contactnum && $rid && $res_contacttype && $res_citizenship){
-             $query=mysqli_query($conn,"INSERT INTO resident_contact(contact_ID,contact_telnum,res_ID,contactType_ID,country_ID) VALUES('$cid','$res_contactnum','$rid','$res_contacttype','$res_citizenship') ");
-
+          $query=mysqli_query($conn,"INSERT INTO resident_contact(contact_ID,contact_telnum,res_ID,contactType_ID,country_ID) VALUES('$cid','$res_contactnum','$rid','$res_contacttype','$res_citizenship') ");
         }
 
-          if ( $rid ){
-             $query=mysqli_query($conn,"INSERT INTO resident_address(address_ID,address_Unit_Room_Floor_num,res_ID,address_BuildingName,address_Lot_No,address_Block_No,address_Phase_No,address_House_No,address_Street_Name,address_Subdivision,country_ID,purok_ID,region_ID,addressType_ID) VALUES('$aid','$res_unit','$rid','$res_building',' $res_lot',' $res_block','$res_phase','$res_houseno','$res_street','$res_subd','$res_citizenship','$res_purokno','$res_region','$res_address') ");
-
+        if ($rid){
+          $query=mysqli_query($conn,"INSERT INTO resident_address(address_ID,address_Unit_Room_Floor_num,res_ID,address_BuildingName,address_Lot_No,address_Block_No,address_Phase_No,address_House_No,address_Street_Name,address_Subdivision,country_ID,purok_ID,region_ID,addressType_ID) VALUES('$aid','$res_unit','$rid','$res_building',' $res_lot',' $res_block','$res_phase','$res_houseno','$res_street','$res_subd','$res_citizenship','$res_purokno','$res_region','$res_address') ");
         }
 
-    header('Location: resident.php');
+    // header('Location: resident.php');
 
     }
 
@@ -298,7 +301,7 @@ res_fName, res_mName,res_lName,suffix_ID, gender_ID, res_Bday, marital_ID,religi
   <?php 
 
   
-$sql = mysqli_query($conn,"SELECT res_ID,res_fName,res_mName,res_lName,rs.suffix,rms.marital_Name,rg.gender_Name,rr.religion_Name,ro.occupation_Name,ros.occuStat_Name,res_Date_Record,rc.country_citizenship,res_Bday,TIMESTAMPDIFF(YEAR,res_Bday,CURDATE()) AS age,
+$sql = mysqli_query($conn,"SELECT ra.*,rd.res_ID,purok_Name,res_fName,res_mName,res_lName,rs.suffix,rms.marital_Name,rg.gender_Name,rr.religion_Name,ro.occupation_Name,ros.occuStat_Name,res_Date_Record,rc.country_citizenship,res_Bday,TIMESTAMPDIFF(YEAR,res_Bday,CURDATE()) AS age,
 (case  
  when (TIMESTAMPDIFF(Month,res_Bday,CURDATE())<=1) then 'Maternal and Newborn'
  when (TIMESTAMPDIFF(Month,res_Bday,CURDATE())<=1 and TIMESTAMPDIFF(Month,res_Bday,CURDATE())<=12) then 'Babies'
@@ -318,6 +321,8 @@ LEFT JOIN ref_marital_status rms ON rms.marital_ID = rd.marital_ID
 LEFT JOIN ref_religion rr ON rr.religion_ID = rd.religion_ID 
 LEFT JOIN ref_occupation ro ON ro.occupation_ID = rd.occupation_ID 
 LEFT JOIN ref_occupation_status ros ON ros.occuStat_ID = rd.occuStat_ID
+LEFT JOIN resident_address ra ON ra.res_ID = rd.res_ID
+LEFT JOIN ref_purok rp ON rp.purok_ID = ra.purok_ID
 LEFT JOIN ref_country rc ON rc.country_ID = rd.country_ID");
 
 ?>
@@ -334,6 +339,8 @@ LEFT JOIN ref_country rc ON rc.country_ID = rd.country_ID");
             <th>Sex</th>
             <th>Citizenship</th>
             <th>Occupation</th>
+            <th>Purok</th>
+            <th>House No.</th>
             <th>Action</th>
           </tr>
         </thead>
@@ -355,6 +362,8 @@ LEFT JOIN ref_country rc ON rc.country_ID = rd.country_ID");
             <td><?php echo $res_data['gender_Name'] ?></td>
             <td><?php echo $res_data['country_citizenship'] ?></td>
             <td><?php echo $res_data['occupation_Name'] ?></td>
+            <td><?php echo $res_data['purok_Name'] ?></td>
+            <td><?php echo $res_data['address_House_No'] ?></td>
             <td>
               <div class="btn-group">
                 <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-cog"></span></button>

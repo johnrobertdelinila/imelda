@@ -342,7 +342,7 @@ $user_data = mysqli_fetch_array($user_sql);
                         <a  href="Health_and_Sanitation/index" target = "FraDisplay">Health and Sanitation</a>
                     </li> -->
                     <li>
-                        <a  href="Peace_and_Order/incident" target = "FraDisplay">Peace and Order</a>
+                        <a  href="Peace_and_Order/incident" target = "FraDisplay">Blotter</a>
                     </li>
                     <li>
                         <a  href="Finance/index" target = "FraDisplay">Finance</a>
