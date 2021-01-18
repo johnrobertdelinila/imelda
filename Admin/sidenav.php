@@ -344,9 +344,9 @@ $user_data = mysqli_fetch_array($user_sql);
                     <li>
                         <a  href="Peace_and_Order/incident" target = "FraDisplay">Blotter</a>
                     </li>
-                    <li>
+                    <!-- <li>
                         <a  href="Finance/index" target = "FraDisplay">Finance</a>
-                    </li>
+                    </li> -->
                     <li>
                         <a  href="Resident_Profiling/resident" target = "FraDisplay">Resident Profiling</a>
                     </li>
@@ -359,9 +359,15 @@ $user_data = mysqli_fetch_array($user_sql);
                     <li>
                         <a  href="Barangay_Officials/index" target = "FraDisplay">Barangay Official</a>
                     </li>
-                    <li>
-                        <a  href="Report/viewreport" target = "FraDisplay">Report</a>
-                    </li>
+                    <?php
+                    if ($user_data['position_Name'] != 'Punong Barangay') {
+                    ?>
+                        <li>
+                            <a  href="Report/viewreport" target = "FraDisplay">Report</a>
+                        </li>
+                    <?php
+                    }
+                    ?>
                     <?php 
                     if ($user_data['commitee_assignID'] == 3) {
                       ?>
