@@ -133,8 +133,6 @@ class allfunctions extends database{
     }
 
 
-
-
     public function updateIncident($data){
         $dateNow = date('Y-m-d h:i:s');
         $query = "UPDATE ms_incident SET case_incident = '".$data['incident_type']."', blotterType_id = '".$data['blotter_type']."', status = '".$data['status']."', date_incident = '".$data['date']."', time_incident = '".$data['time']."', location = '".$data['incident_location']."',  narrative = '".$data['narrative']."', incident_title = '".$data['incident_title']."', date_reported = '".$dateNow."' WHERE incident_id = '".$data['id']."' ";

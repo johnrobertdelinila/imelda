@@ -140,7 +140,7 @@ $sql = mysqli_query($conn,"SELECT * FROM `brgy_official_detail` bod
 INNER JOIN resident_detail rd ON rd.res_ID = bod.res_ID
 LEFT JOIN ref_suffixname rs ON rs.suffix_ID = rd.suffix_ID
 LEFT JOIN ref_position rp ON rp.position_ID = bod.commitee_assignID
-WHERE visibility = 1 AND  position_Name LIKE 'Barangay Official%'");       
+WHERE visibility = 1 AND  position_Name LIKE 'Sitio%'");       
 
 $count_official = mysqli_num_rows($sql);
 

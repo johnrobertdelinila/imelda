@@ -282,7 +282,7 @@ if($resultcheckNow > 0){
 ?>
 <?php
 $ap = date_default_timezone_set('Asia/Manila');
-date_default_timezone_get($ap);
+date_default_timezone_get();
 $datedate = date('Y-m-d H:i:s');
 
 

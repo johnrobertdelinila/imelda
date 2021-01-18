@@ -283,13 +283,12 @@ if($resultcheckNow > 0){
 ?>
 <?php
 $ap = date_default_timezone_set('Asia/Manila');
-date_default_timezone_get($ap);
+date_default_timezone_get();
 $datedate = date('Y-m-d H:i:s');
 
 
 $sqlsli = "INSERT INTO form_release (res_ID, form_ID, purpose_ID, release_date)
          VALUES ('$res_IDnow', 1, 1,'$datedate');";
-
          mysqli_query($conn, $sqlsli);
 ?>
 

@@ -135,7 +135,7 @@ $resultTrans=mysqli_fetch_array($transR);
 <!--end of header and display officials-->
 <?php
 $ap = date_default_timezone_set('Asia/Manila');
-date_default_timezone_get($ap);
+date_default_timezone_get();
 $datedate = date('Y-m-d H:i:s');
 
 
