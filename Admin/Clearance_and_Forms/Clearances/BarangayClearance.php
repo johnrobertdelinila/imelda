@@ -305,11 +305,12 @@ $ap = date_default_timezone_set('Asia/Manila');
 date_default_timezone_get();
 $datedate = date('Y-m-d H:i:s');
 
+$ORCTC = $ctcNo . "&&&&&" . $orNo;
+  $sqlsli = "INSERT INTO form_release (res_ID, form_ID, purpose_ID, release_date)
+  VALUES ('$res_IDnow', 33, '$ORCTC','$datedate');";
 
-$sqlsli = "INSERT INTO form_release (res_ID, form_ID, purpose_ID, release_date)
-         VALUES ('$res_IDnow', 1, 1,'$datedate');";
-
-         mysqli_query($conn, $sqlsli);
+  mysqli_query($conn, $sqlsli);
+  
 ?>
 <!DOCTYPE>
 <html>

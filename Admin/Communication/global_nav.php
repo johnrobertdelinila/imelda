@@ -14,7 +14,7 @@
           <ul class="nav navbar-nav">
             <li class="active"><a href="index">Home</a></li>
             <li><a data-toggle="modal" data-target="#post">Post Announcement</a></li>
-            <li><a href="smslog">SMS Log</a></li>
+            <li style="display:none;"><a href="smslog">SMS Log</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>

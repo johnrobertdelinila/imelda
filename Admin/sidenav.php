@@ -336,7 +336,7 @@ $user_data = mysqli_fetch_array($user_sql);
                         <a  href="Account/index" target = "FraDisplay">Account</a>
                     </li>
                     <li>
-                        <a  href="Clearance_and_Forms/index" target = "FraDisplay">Clearance and Forms</a>
+                        <a  href="Clearance_and_Forms/index" target = "FraDisplay">Forms</a>
                     </li>
                     <!-- <li>
                         <a  href="Health_and_Sanitation/index" target = "FraDisplay">Health and Sanitation</a>
