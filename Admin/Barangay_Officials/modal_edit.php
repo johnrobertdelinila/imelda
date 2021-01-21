@@ -22,8 +22,9 @@ else{
    $suffix = $official['suffix'];
 }
 ?>
-  <form id="form1" method="POST" action="action">
+  <form id="form1" method="POST" action="action"> 
    <div class="form-group">
+<input type="hidden" name="commitee_assignID" value="<?php echo $official['commitee_assignID']?>" />
   <input type="text" name="official_ID"  class="form-control" value="<?php echo $official['official_ID']?>">
    </div>
   <div class="form-group">

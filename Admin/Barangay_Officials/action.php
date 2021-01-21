@@ -8,6 +8,7 @@ if (isset($_POST['submit-official'])) {
 	 $position = $_POST['position'];
 	 $startdate = $_POST['startdate'];
 	 $enddate = $_POST['enddate'];
+	 $commitee_assignID = $_POST['commitee_assignID'];
 	if ($Commitee == 1 and $position == 10) {
 		 $pos =  $Commitee;
 	}
@@ -15,7 +16,7 @@ if (isset($_POST['submit-official'])) {
  		$pos = $position;
 	}
 	$sql = mysqli_query($conn,"INSERT INTO `brgy_official_detail` (`official_ID`, `res_ID`, `commitee_assignID`, `official_Start`, `official_End`, `visibility`) 
-		VALUES (NULL, '$res_ID', '$pos', '$startdate', '$enddate', '1')");
+		VALUES (NULL, '$res_ID', '$pos', '$startdate', '$enddate', '$commitee_assignID')");
 	echo "<script>alert('Successfully Add New Official!');
                                     window.location='officials';
                                 </script>";  
