@@ -47,6 +47,7 @@ $resident = mysqli_fetch_array($sql);
                       <?php
                     }
                     ?>
+                    <input type="file" name="image" id="profileImg" >
                     <script type="text/javascript">
                       function readURL(input) {
         
