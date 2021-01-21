@@ -1,37 +1,5 @@
 <?php
 include_once '../connection.php';
-$ctcNo = $_POST['ctcNo'];
-$orNo = $_POST['orNo'];
-$res_ID = $_POST['busid'];
-$businessName = $_POST['businessName'];
-$house_No = $_POST['houseNo'];
-$street = $_POST['street'];
-$sqlget_info = "SELECT * FROM resident_detail
-                LEFT JOIN resident_address ON resident_detail.res_ID = resident_address.res_ID
-                  LEFT JOIN ref_marital_status ON resident_detail.marital_ID = ref_marital_status.marital_ID
-                  LEFT JOIN ref_country ON resident_detail.country_ID = ref_country.country_ID
-                  LEFT JOIN ref_gender ON resident_detail.gender_ID = ref_gender.gender_ID
-                  LEFT JOIN ref_religion ON resident_detail.religion_ID = ref_religion.religion_ID
-                  LEFT JOIN ref_brgy ON resident_address.brgy_ID = ref_brgy.brgy_ID
-                  LEFT JOIN ref_citymun ON resident_address.citymun_ID = ref_citymun.citymun_ID
-                  LEFT JOIN ref_province ON resident_address.province_ID = ref_province.province_ID
-                  WHERE resident_detail.res_ID = '$res_ID'";
-
-                $result_info = mysqli_query($conn, $sqlget_info);
-                $resultCheck_info = mysqli_num_rows($result_info);
-
-                if($resultCheck_info > 0){
-                  while($row = mysqli_fetch_assoc($result_info)){
-                    $first= $row['res_fName'];
-                    $middleName = $row['res_mName'];
-                    $lastName = $row['res_lName'];
-                    $civilStatus = $row['marital_Name'];
-                    $brgy = $row['brgy_Name'];
-                    $city = $row['citymun_Name'];
-                    $province =$row ['province_Name'];
-                  }
-                }
-
 ?>
 
 <?php
@@ -269,27 +237,17 @@ $resultlogo1=mysqli_fetch_array($sth1);
 ?>
 
 <!--end of header and display officials-->
-<?php
-$sqlgetNow = "SELECT res_ID FROM resident_detail WHERE res_fName LIKE '%$first%' AND res_lName LIKE '%$lastName%' AND res_mName LIKE '%$middleName%';";
-$resultgetNow = mysqli_query($conn, $sqlgetNow);
-$resultcheckNow = mysqli_num_rows($resultgetNow);
 
-if($resultcheckNow > 0){
-  while($row99 = mysqli_fetch_assoc($resultgetNow)){
-    $res_IDnow = $row99['res_ID'];
-  }
-}
-?>
 <?php
 $ap = date_default_timezone_set('Asia/Manila');
 date_default_timezone_get();
 $datedate = date('Y-m-d H:i:s');
 
-$ORCTC = $ctcNo . "&&&&&" . $orNo;
-$sqlsli = "INSERT INTO form_release (res_ID, form_ID, purpose_ID, release_date)
-         VALUES ('$res_IDnow', 42, '$ORCTC','$datedate');";
+// $ORCTC = $ctcNo . "&&&&&" . $orNo;
+// $sqlsli = "INSERT INTO form_release (res_ID, form_ID, purpose_ID, release_date)
+//          VALUES ('$res_IDnow', 42, '$ORCTC','$datedate');";
 
-         mysqli_query($conn, $sqlsli);
+//          mysqli_query($conn, $sqlsli);
 ?>
 <!DOCTYPE>
 <html>
@@ -312,7 +270,7 @@ $sqlsli = "INSERT INTO form_release (res_ID, form_ID, purpose_ID, release_date)
                           }
 
                         doc.addImage(img, 'JPEG',-4, 20, canvas.width, canvas.height);
-                        doc.save('BarangayClearance.pdf');
+                        doc.save('NoticeOfSummon.pdf');
                     });﻿
       }
     </script>
@@ -321,14 +279,12 @@ $sqlsli = "INSERT INTO form_release (res_ID, form_ID, purpose_ID, release_date)
   <body>
     <div id="main-container">
       <div class="logo-holder">
-        <?php
-          echo '<img src="data:image/jpeg;base64,'.base64_encode( $resultlogo['logo_img'] ).'"/>';
-        ?>
+        <h4><u><?php echo $_GET['complainant']; ?></u><br><i>Complainant</i></h4>
+        <h5>-against-</h5>
+        <h4><u><?php echo $_GET['offender']; ?></u><br><i>Offender</i></h4>
       </div>
       <div class="logo-holder1">
-        <?php
-          echo '<img src="data:image/jpeg;base64,'.base64_encode( $resultlogo1['logo_img'] ).'"/>';
-        ?>
+        <h4>Barangay Case No. 2020<br>For: <?php echo $_GET['issue'] ?></h4>
       </div>
       <div class="header">
         Republic of the Philippines<br/>
@@ -337,13 +293,14 @@ $sqlsli = "INSERT INTO form_release (res_ID, form_ID, purpose_ID, release_date)
         <span id="name-input">Barangay <?php echo $head_brgy_Name;?></span><br>
       </div>
       <div class="header tag">
-        OFFICE OF THE BARANGAY HEAD
+        <!-- OFFICE OF THE BARANGAY HEAD -->
+        OFFICE OF THE LUPONG TAGAPAMAYAPA
       </div>
-      <div class="header tag1">
-        BARANGAY BUSINESS CLEARANCE
+      <div class="header tag1" style="margin-top: 120px;">
+        SUMMONS
       </div>
         <div class="c-wrapper">
-          <div class="officials center">
+          <div class="officials" style="display:none;">
             <div class="names">
                 <br>
                 <span id="name-input"><?php echo $capfName." ".$capmInitial."."." ".$caplName;?></span><br>
@@ -413,21 +370,21 @@ $sqlsli = "INSERT INTO form_release (res_ID, form_ID, purpose_ID, release_date)
                 Treasurer
             </div>
           </div>
-          <div class="content">
+          <div class="center">
             <div id="par">
-              <br><br>To whom it may concern:<br><br>
-              &emsp;&emsp;&emsp;This is to certify that Mr. / Ms. / Mrs.  <span id="name-input"><?php echo $first." ".$middleName." ".$lastName; ?></span> (Operator / Owner)
-              of <span id="name-input"><?php echo $businessName;?></span> with the office address at
-              <span id="name-input"><?php echo $house_No." ".$street." ".$head_brgy_Name." ".$citymun_disp.","." ".$province_disp;?></span> is hereby permitted to continue his business subject to the rules and regulation provided for under the existing
-              ordinances, rules and regulation being enforced in the Barangay.<br/><br/>
+              <br><br>To <?php echo $_GET['offender']; ?>:<br><br>
+              &emsp;&emsp;&emsp;You are hereby summoned to appear before me in person, on the <?php echo $_GET['date'] ?><span id="day"></span> at <span id="name-input">Barangay Imelda Multi-Purpose Hall</span>
+              at <?php echo $_GET['time'] ?><span id="morn"></span>, then and there answer to a complaint made before me, copy of which attached
+              hereto, for mediation, conciliation of your dispute with complaint/s.<br/><br/>
 
-              &emsp;&emsp;&emsp;This certify further that he / she is a known to be a person of good moral character, law abiding
-              citizen and has not been involved nor convicted in any crime.<br><br>
+              &emsp;&emsp;&emsp;You are hereby warned that if you refuse or willfully fail to appear in obedience to this summons,
+              you may be barred from filing any counterclaim arising from said complaint. FAIL NOT or else punishment as for contempt
+              of court.<br><br>
 
               &emsp;&emsp;&emsp;Issued this <span id="name-input"><?php echo $datedate?></span> at <span id="name-input"><?php echo $head_brgy_Name." ".$citymun_disp.","." ".$province_disp;?></span>.
 
             </div>
-              <div class="ccon">
+              <div class="ccon" style="float: right; margin-top: -35px;">
                 <div class="puno margint">
                   <span id="name-input"><?php echo $capfName." ".$capmInitial."."." ".$caplName;?></span><br>
                   &emsp;PUNONG BARANGAY
@@ -435,7 +392,7 @@ $sqlsli = "INSERT INTO form_release (res_ID, form_ID, purpose_ID, release_date)
               </div>
           </div>
         </div>
-        <div class="ctc">
+        <!-- <div class="ctc">
           CTC NO. <span id="name-input"><?php echo $orNo;?></span><br>
           ISSUED ON: <span id="name-input"><?php echo $datedate;?></span><br>
           ISSUED AT: <span id="name-input"><?php echo $head_brgy_Name." ".$citymun_disp.","." ".$province_disp;?></span><br>
@@ -443,8 +400,11 @@ $sqlsli = "INSERT INTO form_release (res_ID, form_ID, purpose_ID, release_date)
         </div>
         <div class="seal">
           <i>NOTE: not valid without a seal</i>
-        </div>
+        </div> -->
         <h3><a href="javascript:genPDF();" data-html2canvas-ignore="true">Download PDF</a><h3>
     </div>
   </body>
 </html>
+<script>
+  const str = 'in the >morning or afternoon<';
+</script>

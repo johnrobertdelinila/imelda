@@ -79,38 +79,40 @@ $s1="";?>
                                 $v0 = $row["res_ID"];
                                 $v1 = explode("&&&&&",$row["purpose_ID"])[0];
                                 $v2 = explode("&&&&&",$row["purpose_ID"])[1]; 
+
+                                echo("Creator/CreateBusinessPermit.php?res_ID=$v0&or=$v1&ctc=$v2");
                                 
-                                if($row["clearance_form"]=="Barangay Clearance"){ 
-                                  echo("Clearances/BarangayClearance.php?res_ID=$v0&or=$v1&crc=$v2");
-                                }
-                                else if($row["clearance_form"]=="Building Permit" || $row["clearance_form"]=="Barangay Building Permit" ){
-                                  echo("Creator/CreateBuildingPermit.php?res_ID=$v0&or=$v1&ctc=$v2");
-                                }
-                                else if($row["clearance_form"]=="Barangay Business Permit" || $row["clearance_form"]=="Business Permit"){
+                                // if($row["clearance_form"]=="Barangay Clearance"){ 
+                                //   echo("Clearances/BarangayClearance.php?res_ID=$v0&or=$v1&crc=$v2");
+                                // }
+                                // else if($row["clearance_form"]=="Building Permit" || $row["clearance_form"]=="Barangay Building Permit" ){
+                                //   echo("Creator/CreateBuildingPermit.php?res_ID=$v0&or=$v1&ctc=$v2");
+                                // }
+                                // else if($row["clearance_form"]=="Barangay Business Permit" || $row["clearance_form"]=="Business Permit"){
         
-                                  echo("Creator/CreateBusinessPermit.php?res_ID=$v0&or=$v1&ctc=$v2");
-                                }
-                                else if($row["clearance_form"]=="Certificate of Residency" || $row["clearance_form"]=="Indigency"){
-                                  echo("Clearances/CertificateOfIndigency.php?res_ID=$v0&or=$v1&crc=$v2");
-                                }
-                                else if($row["clearance_form"]=="Barangay Logging" || $row["clearance_form"]=="Logging Permit" ||$row["clearance_form"]=="Logging" || $row["clearance_form"]=="Tree Cutting" || $row["clearance_form"]=="Cutting Trees"){
-                                  echo("Clearances/CuttingTrees.php?res_ID=$v0&or=$v1&crc=$v2");
-                                }
-                                else if($row["clearance_form"]=="Electrical Permit" || $row["clearance_form"]=="Barangay Electrical Permit"){
-                                  echo("Clearances/ElectricalPermit.php?res_ID=$v0&or=$v1&crc=$v2");
-                                }
-                                else if($row["clearance_form"]=="Barangay Fencing" || $row["clearance_form"]=="Fencing" || $row["clearance_form"]=="Fencing Permit" || $row["clearance_form"]=="Barangay Fencing Permit"){
-                                  echo("Creator/CreateFencingPermit.php?res_ID=$v0&or=$v1&ctc=$v2");
-                                }
-                                else if($row["clearance_form"]=="Working Permit" || $row["clearance_form"]=="Barangay Working Permit"){
-                                  echo("Creator/CreateWorkingPermit.php?res_ID=$v0&or=$v1&crc=$v2");
-                                }
-                                else if($row["clearance_form"]=="Film Making" || $row["clearance_form"]=="Film Making Permit" || $row["clearance_form"]=="Shooting Permit"){
-                                  echo("Creator/CreateFilmMakingPermit.php?res_ID=$v0&or=$v1&crc=$v2");
-                                }
-                                else if($row["clearance_form"]=="Barangay Transient Information" || $row["clearance_form"]=="Transient Information" || $row["clearance_form"]=="Barangay Transient"){
-                                  echo("Creator/CreateTransientInformation.php?or=$v1&ctc=$v2");
-                                }
+                                //   echo("Creator/CreateBusinessPermit.php?res_ID=$v0&or=$v1&ctc=$v2");
+                                // }
+                                // else if($row["clearance_form"]=="Certificate of Residency" || $row["clearance_form"]=="Indigency"){
+                                //   echo("Clearances/CertificateOfIndigency.php?res_ID=$v0&or=$v1&crc=$v2");
+                                // }
+                                // else if($row["clearance_form"]=="Barangay Logging" || $row["clearance_form"]=="Logging Permit" ||$row["clearance_form"]=="Logging" || $row["clearance_form"]=="Tree Cutting" || $row["clearance_form"]=="Cutting Trees"){
+                                //   echo("Clearances/CuttingTrees.php?res_ID=$v0&or=$v1&crc=$v2");
+                                // }
+                                // else if($row["clearance_form"]=="Electrical Permit" || $row["clearance_form"]=="Barangay Electrical Permit"){
+                                //   echo("Clearances/ElectricalPermit.php?res_ID=$v0&or=$v1&crc=$v2");
+                                // }
+                                // else if($row["clearance_form"]=="Barangay Fencing" || $row["clearance_form"]=="Fencing" || $row["clearance_form"]=="Fencing Permit" || $row["clearance_form"]=="Barangay Fencing Permit"){
+                                //   echo("Creator/CreateFencingPermit.php?res_ID=$v0&or=$v1&ctc=$v2");
+                                // }
+                                // else if($row["clearance_form"]=="Working Permit" || $row["clearance_form"]=="Barangay Working Permit"){
+                                //   echo("Creator/CreateWorkingPermit.php?res_ID=$v0&or=$v1&crc=$v2");
+                                // }
+                                // else if($row["clearance_form"]=="Film Making" || $row["clearance_form"]=="Film Making Permit" || $row["clearance_form"]=="Shooting Permit"){
+                                //   echo("Creator/CreateFilmMakingPermit.php?res_ID=$v0&or=$v1&crc=$v2");
+                                // }
+                                // else if($row["clearance_form"]=="Barangay Transient Information" || $row["clearance_form"]=="Transient Information" || $row["clearance_form"]=="Barangay Transient"){
+                                //   echo("Creator/CreateTransientInformation.php?or=$v1&ctc=$v2");
+                                // }
                                 
                                 ?>'><?php echo $row['clearance_form'];?></a></td>
                                 <td><?php echo $row['price'];?></td>

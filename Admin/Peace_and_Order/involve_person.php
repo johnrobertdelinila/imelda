@@ -34,9 +34,18 @@ if(isset($_GET['case']) && $_GET['case'] !== ""){
             }else{
                 $res = $systems->getResidentDetails($off['off_res_ID']);
                 // var_dump($res); 
+                $offender = $res[0]['res_lName'].' '.$res[0]['res_mName']. '. '.$res[0]['res_fName'];
                 $offender_name = $res[0]['res_lName'].' '.$res[0]['res_fName'].','.$res[0]['res_mName'].','.$res[0]['suffix'];
                 //$offender_address = $res[0]['address_Unit_Room_Floor_num'].' '. $res[0]['address_BuildingName'].' '. $res[0]['address_Lot_No'].' '.$res[0]['address_Block_No'].' '.$res[0]['address_House_No'].' '.$res[0]['address_Street_Name'].' '.$res[0]['address_Subdivision'];
                 $offender_gender = $res[0]['gender_Name'];
+
+
+                $complainant = $systems->getComplainant($_GET['case']);
+                while($compl = mysqli_fetch_array($complainant)){
+                    $res2 = $systems->getResidentDetails($compl['res_ID']);
+                    $complainant_name = $res2[0]['res_lName'].' '.$res2[0]['res_mName']. '. '.$res2[0]['res_fName'];
+                }
+
             }
 
             $data_offender .= "<tr>
@@ -55,6 +64,7 @@ if(isset($_GET['case']) && $_GET['case'] !== ""){
                     </td>
                     <td>
                         <a href='edit_person.php?id=$off_id&case=$case_no&person_type=offender' class=\"btn btn-sm btn-warning\">Edit details</a>
+                        <a href='../Clearance_and_Forms/Clearances/BusinessPermit.php?offender=$offender&complainant=$complainant_name&issue=$incident_title' class=\"btn btn-sm btn-success\">Summon</a>
                         <a href='remove_person.php?id=$off_id&case=$case_no&person_type=offender' class=\"btn btn-sm btn-danger\">Remove</a>
                     </td>
                 </tr>";
@@ -198,3 +208,17 @@ if(isset($_GET['case']) && $_GET['case'] !== ""){
 </div>
     
 <?php include('inc/footer.php');?>
+
+<script>
+    $(document).ready(() => {
+        $(document).on('click', '.btn-success', function(e) {
+            e.preventDefault();
+
+            const date = prompt("Enter the date of the Summon (YYYY-MM-DD)");
+            const time = prompt("Enter the time ex. 7:00 AM");
+
+            const href = $(this).attr('href');
+            window.location.href = href + "&date=" + date + "&time=" + time;
+        });
+    });
+</script>
