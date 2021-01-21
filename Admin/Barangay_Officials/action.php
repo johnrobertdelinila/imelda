@@ -16,7 +16,7 @@ if (isset($_POST['submit-official'])) {
  		$pos = $position;
 	}
 	$sql = mysqli_query($conn,"INSERT INTO `brgy_official_detail` (`official_ID`, `res_ID`, `commitee_assignID`, `official_Start`, `official_End`, `visibility`) 
-		VALUES (NULL, '$res_ID', '$commitee_assignID', '$startdate', '$enddate', '1')");
+		VALUES (NULL, '$res_ID', '$pos', '$startdate', '$enddate', '1')");
 	echo "<script>alert('Successfully Add New Official!');
                                     window.location='officials';
                                 </script>";  
@@ -36,8 +36,7 @@ if (isset($_POST['update-official'])) {
  		$pos = $position;
 	}
 	$sql = mysqli_query($conn,"UPDATE `brgy_official_detail`
-	 SET `commitee_assignID` = '$commitee_assignID',
-	 `official_Start` = '$startdate',
+	 SET `official_Start` = '$startdate',
 	 `official_End` = '$enddate' 
 	 WHERE `brgy_official_detail`.`official_ID` = '$official_ID'");
 	echo "<script>alert('Successfully Update Official!');
