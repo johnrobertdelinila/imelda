@@ -113,18 +113,8 @@ td {
 							$secName1=$row11["res_fName"]." ".$row11["res_mName"].". ".$row11["res_lName"];
 							
 							$_SESSION['desk']= $secName1;
-							
-							
+								
 						}
-        
-        
-        
-        
-        
-        
-        
-					
-						
 						
 					?>
         
@@ -143,7 +133,9 @@ td {
            $pID= $_SESSION['position_ID'];
 					
 						$con =  mysqli_connect("localhost", "root", "","bmis_db");
-						$query = "SELECT ref_report.report_Name, ref_report.report_ID FROM `ref_report` INNER JOIN report_list WHERE ref_report.report_ID = report_list.report_ID AND report_list.position_ID = '$pID' ORDER BY ref_report.report_Name";
+						$query = "SELECT ref_report.report_Name, ref_report.report_ID FROM `ref_report` 
+                        INNER JOIN report_list WHERE ref_report.report_ID = report_list.report_ID AND report_list.position_ID = '$pID' 
+                        ORDER BY ref_report.report_Name";
 						$res = mysqli_query($con,$query);
 						
 					

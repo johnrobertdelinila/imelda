@@ -359,15 +359,9 @@ $user_data = mysqli_fetch_array($user_sql);
                     <li>
                         <a  href="Barangay_Officials/index" target = "FraDisplay">Barangay Official</a>
                     </li>
-                    <?php
-                    if ($user_data['position_Name'] != 'Punong Barangay') {
-                    ?>
-                        <li>
-                            <a  href="Report/viewreport" target = "FraDisplay">Report</a>
-                        </li>
-                    <?php
-                    }
-                    ?>
+                    <li>
+                        <a  href="Report/viewreport" target = "FraDisplay">Report</a>
+                    </li>
                     <?php 
                     if ($user_data['commitee_assignID'] == 3) {
                       ?>
