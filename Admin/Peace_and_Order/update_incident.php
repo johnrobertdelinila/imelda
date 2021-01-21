@@ -17,6 +17,7 @@
                 $date_reported = $row['date_reported'];
                 $location = $row['location'];
                 $narrative = $row['narrative'];
+                $settlement = $row['settlement'];
                 $status = $row['status'];
             }            
         }
@@ -324,13 +325,15 @@
                                 <div class="col-md-2 col-sm-12">
                                     <div class="form-group">
                                         <label>Status</label>
-                                        <select class="form-control" name="status">
-                                            <option value="1" <?php echo $status === '1'? "selected":"";?> >Mediated 4a</option>
+                                        <select class="form-control select-status" name="status">
+                                            <!-- <option value="1" <?php echo $status === '1'? "selected":"";?> >Mediated 4a</option>
                                             <option value="2"  <?php echo $status === '2'? "selected":"";?> >Concialited 4b</option>
                                             <option value="3" <?php echo $status === '3'? "selected":"";?> >Arbitrated 4a</option>
                                             <option value="4" <?php echo $status === '4'? "selected":"";?> >Arbitrated 4b</option>
                                             <option value="5"  <?php echo $status === '5'? "selected":"";?> >Dismiss 4c</option>
-                                            <option value="6"  <?php echo $status === '6'? "selected":"";?> >Certified case 4d</option>
+                                            <option value="6"  <?php echo $status === '6'? "selected":"";?> >Certified case 4d</option> -->
+                                            <option value="1" <?php echo $status === '1'? "selected":"";?> >Minutes of Hearing</option>
+                                            <option value="2"  <?php echo $status === '2'? "selected":"";?> >Settled</option>
                                         </select>
                                     </div>
                                 </div>
@@ -358,6 +361,14 @@
                                         <textarea style="height:250px!important;" class="form-control" name="narrative" id=""><?php echo $narrative?></textarea>
                                     </div>       
                                 </div>
+                                
+                                <div class="col-md-12 col-sm-12 settlement-container" style="<?php ($status === '2' ? '' : 'display:none;') ?>">
+                                    <div class="form-group">
+                                        <label>Settlement</label>
+                                        <textarea style="height:250px!important;" class="form-control" name="settlement" id=""><?php echo (ISSET($settlement) && $settlement != null ? $settlement : "") ?></textarea>
+                                    </div>       
+                                </div>
+
                             </div>  
                         </div>
                         <div class="card-footer clearfix">      
@@ -372,3 +383,15 @@
 </div>
     
 <?php include('inc/footer.php');?>
+
+<script>
+    $(document).ready(() => {
+        $(document).on('change', '.select-status', (e) => {
+            if($(e.currentTarget).val() == '2') {
+                $('.settlement-container').show();
+            }else {
+                $('.settlement-container').hide();
+            }
+        });
+    });
+</script>

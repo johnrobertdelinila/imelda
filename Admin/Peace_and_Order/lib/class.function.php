@@ -44,7 +44,7 @@ class allfunctions extends database{
         $date = date('Y-m-d', $time);
         $hour_24  = date("H:i:s", strtotime(strtoupper($data['time'])));
 
-        $query = 'INSERT into ms_incident (blotterType_id,date_incident, case_incident, time_incident, location,  narrative, incident_title, date_reported) values ("'.$data['blotter_type'].'","'.$date.'","'.$data['incident_type'].'","'.$hour_24.'","'.$data['incident_location'].'","'.$data['narrative'].'","'.$data['incident_title'].'","'.$dateNow.'")';
+        $query = 'INSERT into ms_incident (blotterType_id,date_incident, case_incident, time_incident, location,  narrative, settlement, incident_title, date_reported) values ("'.$data['blotter_type'].'","'.$date.'","'.$data['incident_type'].'","'.$hour_24.'","'.$data['incident_location'].'","'.$data['narrative'].'","'.$data['settlement'].'","'.$data['incident_title'].'","'.$dateNow.'")';
         $last_insert_id = $this->db->insert($query);
 
         if($data['complianantTypeOffender'] == 1){
@@ -135,7 +135,10 @@ class allfunctions extends database{
 
     public function updateIncident($data){
         $dateNow = date('Y-m-d h:i:s');
-        $query = "UPDATE ms_incident SET case_incident = '".$data['incident_type']."', blotterType_id = '".$data['blotter_type']."', status = '".$data['status']."', date_incident = '".$data['date']."', time_incident = '".$data['time']."', location = '".$data['incident_location']."',  narrative = '".$data['narrative']."', incident_title = '".$data['incident_title']."', date_reported = '".$dateNow."' WHERE incident_id = '".$data['id']."' ";
+        $time = strtotime($data['date']);
+        $date = date('Y-m-d', $time);
+        $hour_24  = date("H:i:s", strtotime(strtoupper($data['time'])));
+        $query = "UPDATE ms_incident SET case_incident = '".$data['incident_type']."', blotterType_id = '".$data['blotter_type']."', status = '".$data['status']."', date_incident = '". $date ."', time_incident = '".$hour_24."', location = '".$data['incident_location']."',  narrative = '".$data['narrative']."', settlement = '".$data['settlement']."', incident_title = '".$data['incident_title']."', date_reported = '".$dateNow."' WHERE incident_id = '".$data['id']."' ";
         // $query = "UPDATE ms_incident SET date_incident = '".$data['date']."', time_incident = '".$data['time']."', location = '".$data['incident_location']."',  narrative = '".$data['narrative']."', incident_title = '".$data['incident_title']."', date_reported = '".$dateNow."' WHERE incident_id = '".$data['id']."' ";
         $this->db->update($query);
         if($data['complianantTypeOffender'] == 2){

@@ -671,6 +671,7 @@ $(function() {
             var time = $("input[name=time]").val();
             var incident_location = $("input[name=incident_location]").val();
             var narrative = $("textarea[name=narrative]").val();
+            var settlement = $("textarea[name=settlement]").val();
             var action = $('button[name=save]').val();
             var dataId = $('button[name=save]').data('id');
             var status = $('select[name=status]').val();
@@ -684,7 +685,8 @@ $(function() {
             }
 
             if(action === 'insert'){
-                insert(blotter_type,resident_id,resident_idOffender,type,typeOffender,name,contact_number,gender,birthday, address,offender_name,offender_gender,offender_address,offender_description,incident_type,incident_title,date,time, incident_location, narrative);    
+                insert(blotter_type,resident_id,resident_idOffender,type,typeOffender,name,contact_number,gender,birthday, address,offender_name,offender_gender,offender_address,offender_description,incident_type,incident_title,date,time, 
+                    incident_location, narrative, settlement);    
             }
 
             if(action === 'update'){
@@ -713,6 +715,7 @@ $(function() {
                         'time': time,
                         'incident_location': incident_location,
                         'narrative': narrative,
+                        'settlement': settlement,
 
                         'function': 'updateIncident',
                         'data_id': dataId,
@@ -779,7 +782,7 @@ $(function() {
 
     });
 
-    function insert(blotterType,residentId,residentIdOffender,Type,TypeOffender,Name,contactNumber,Gender,Birthday, Address,offenderName,offenderGender,offenderAddress,offenderDescription,incidentType,incidentTitle,DateHappened,Time, incidentLocation, Narrative){
+    function insert(blotterType,residentId,residentIdOffender,Type,TypeOffender,Name,contactNumber,Gender,Birthday, Address,offenderName,offenderGender,offenderAddress,offenderDescription,incidentType,incidentTitle,DateHappened,Time, incidentLocation, Narrative, settlement){
         $.ajax({
             method: 'POST',
             url: 'lib/class.controller.php',
@@ -805,6 +808,7 @@ $(function() {
                 'time': Time,
                 'incident_location': incidentLocation,
                 'narrative': Narrative,
+                'settlement': settlement,
                 'function': 'insertIncident',
             },
             success: function (data){

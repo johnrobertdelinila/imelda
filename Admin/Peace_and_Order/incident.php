@@ -52,21 +52,26 @@
 
                                             
                                             // var_dump($offenderName);
+                                            // if($row['status'] == '1'){
+                                            //     $status = 'Mediated 4a';
+                                            // }elseif($row['status'] == '2'){
+                                            //     $status = 'Concialited 4b';
+                                            // }
+                                            // elseif($row['status'] == '3'){
+                                            //     $status = 'Arbitrated 4a';
+                                            // }
+                                            // elseif($row['status'] == '4'){
+                                            //     $status = 'Arbitrated 4b';
+                                            // }
+                                            // elseif($row['status'] == '5'){
+                                            //     $status = 'Dismiss 4c';
+                                            // }elseif($row['status'] == '6'){
+                                            //     $status = 'Certified case 4d';
+                                            // }
                                             if($row['status'] == '1'){
-                                                $status = 'Mediated 4a';
+                                                $status = 'Minutes of Hearing';
                                             }elseif($row['status'] == '2'){
-                                                $status = 'Concialited 4b';
-                                            }
-                                            elseif($row['status'] == '3'){
-                                                $status = 'Arbitrated 4a';
-                                            }
-                                            elseif($row['status'] == '4'){
-                                                $status = 'Arbitrated 4b';
-                                            }
-                                            elseif($row['status'] == '5'){
-                                                $status = 'Dismiss 4c';
-                                            }elseif($row['status'] == '6'){
-                                                $status = 'Certified case 4d';
+                                                $status = 'Settled';
                                             }
 
                                             if($row['blotterType_id'] == 2){
@@ -97,21 +102,26 @@
                                             }else if($row['complainantType_ID'] == 1 ){
                                                 // insider
                                                 $res = $systems->getResidentDetails($row['res_ID']);
+                                                // if($row['status'] == '1'){
+                                                //     $status = 'Mediated 4a';
+                                                // }elseif($row['status'] == '2'){
+                                                //     $status = 'Concialited 4b';
+                                                // }
+                                                // elseif($row['status'] == '3'){
+                                                //     $status = 'Arbitrated 4a';
+                                                // }
+                                                // elseif($row['status'] == '4'){
+                                                //     $status = 'Arbitrated 4b';
+                                                // }
+                                                // elseif($row['status'] == '5'){
+                                                //     $status = 'Dismiss 4c';
+                                                // }elseif($row['status'] == '6'){
+                                                //     $status = 'Certified case 4d';
+                                                // }
                                                 if($row['status'] == '1'){
-                                                    $status = 'Mediated 4a';
+                                                    $status = 'Minutes of Hearing';
                                                 }elseif($row['status'] == '2'){
-                                                    $status = 'Concialited 4b';
-                                                }
-                                                elseif($row['status'] == '3'){
-                                                    $status = 'Arbitrated 4a';
-                                                }
-                                                elseif($row['status'] == '4'){
-                                                    $status = 'Arbitrated 4b';
-                                                }
-                                                elseif($row['status'] == '5'){
-                                                    $status = 'Dismiss 4c';
-                                                }elseif($row['status'] == '6'){
-                                                    $status = 'Certified case 4d';
+                                                    $status = 'Settled';
                                                 }
                                                 
                                                 echo    '<tr>
