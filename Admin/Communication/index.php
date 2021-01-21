@@ -195,6 +195,29 @@ while ($ann = mysqli_fetch_array($sql)) {
     <label for="pwd">Description:</label>
     <textarea class="form-control" name="ann_description"></textarea>
   </div>
+  
+
+  <input type="file" name="image" id="attachmentImg" >
+  <script type="text/javascript">
+    function readURL(input) {
+
+      if (input.files && input.files[0]) {
+        var reader = new FileReader();
+    
+        reader.onload = function(e) {
+          $('#blah').attr('src', e.target.result);
+    
+    
+        }
+    
+        reader.readAsDataURL(input.files[0]);
+      }
+    }
+    $("#attachmentImg").change(function() {
+      readURL(this);
+    });
+  </script>
+
   <div class="text-center">
     <input type="submit" name="submit-announcement" value="POST" class="btn btn-success">
   </div>
