@@ -362,7 +362,7 @@
                                     </div>       
                                 </div>
                                 
-                                <div class="col-md-12 col-sm-12 settlement-container" style="<?php ($status === '2' ? '' : 'display:none;') ?>">
+                                <div class="col-md-12 col-sm-12 settlement-container" style="<?php ($status === '1' || $status === null || !ISSET($status) ? '' : 'display:none;') ?>">
                                     <div class="form-group">
                                         <label>Settlement</label>
                                         <textarea style="height:250px!important;" class="form-control" name="settlement" id=""><?php echo (ISSET($settlement) && $settlement != null ? $settlement : "") ?></textarea>

@@ -41,6 +41,7 @@ if(isset($_GET['case']) && $_GET['case'] !== ""){
 
 
                 $complainant = $systems->getComplainant($_GET['case']);
+                $complainant_name = NULL;
                 while($compl = mysqli_fetch_array($complainant)){
                     $res2 = $systems->getResidentDetails($compl['res_ID']);
                     $complainant_name = $res2[0]['res_lName'].' '.$res2[0]['res_mName']. '. '.$res2[0]['res_fName'];
