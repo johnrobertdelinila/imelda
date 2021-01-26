@@ -86,10 +86,10 @@ $suffix = $cap_data['suffix'];
 INNER JOIN resident_detail rd ON rd.res_ID = bod.res_ID
 LEFT JOIN ref_suffixname rs ON rs.suffix_ID = rd.suffix_ID
 LEFT JOIN ref_position rp ON rp.position_ID = bod.commitee_assignID
-WHERE bod. commitee_assignID = 3 AND visibility = 1");
+WHERE bod.commitee_assignID = 3 AND visibility = 1");
 $sec_data = mysqli_fetch_array($sql);
 $sec_data['res_Img'];
-$suffix1 = $sec_data['suffix'];
+$suffix1 = $sec_data['suffix'] != NULL ? $sec_data['suffix'] : "";
  if ($suffix1 == "N/A") {
    $suffix1 = "";
  }

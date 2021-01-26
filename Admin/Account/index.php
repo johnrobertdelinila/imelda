@@ -371,7 +371,7 @@ LEFT JOIN ref_suffixname rs ON rs.suffix_ID = rd.suffix_ID
 LEFT JOIN ref_position rp ON rp.position_ID = bod.commitee_assignID
 WHERE  visibility = 1");
             while ($row=mysqli_fetch_array($rp))
-            {
+            { 
                $suffix = $row['suffix'];
             if ($suffix == "N/A") {
               $suffix = "";
@@ -379,7 +379,7 @@ WHERE  visibility = 1");
             else{
                $suffix = $row['suffix'];
             }
-              ?><option value="<?php echo  $row['res_ID']?>"><?php echo $row[8]." ".$row[9]." ".$row[10]." ".$suffix;?></option>
+              ?><option value="<?php echo  $row['official_ID']?>"><?php echo $row[8]." ".$row[9]." ".$row[10]." ".$suffix;?></option>
             <?php
             }
             ?>

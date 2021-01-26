@@ -43,8 +43,13 @@ if(isset($_GET['case']) && $_GET['case'] !== ""){
                 $complainant = $systems->getComplainant($_GET['case']);
                 $complainant_name = NULL;
                 while($compl = mysqli_fetch_array($complainant)){
-                    $res2 = $systems->getResidentDetails($compl['res_ID']);
-                    $complainant_name = $res2[0]['res_lName'].' '.$res2[0]['res_mName']. '. '.$res2[0]['res_fName'];
+
+                    if($compl['complainantType_ID'] == 2){    
+                        $name = $compl['name'];
+                    }else{
+                        $res2 = $systems->getResidentDetails($compl['res_ID']);
+                        $name = $res2[0]['res_lName'].' '.$res2[0]['res_mName']. '. '.$res2[0]['res_fName'];
+                    }
                 }
 
             }
@@ -65,7 +70,7 @@ if(isset($_GET['case']) && $_GET['case'] !== ""){
                     </td>
                     <td>
                         <a href='edit_person.php?id=$off_id&case=$case_no&person_type=offender' class=\"btn btn-sm btn-warning\">Edit details</a>
-                        <a href='../Clearance_and_Forms/Clearances/BusinessPermit.php?offender=$offender&complainant=$complainant_name&issue=$incident_title' class=\"btn btn-sm btn-success\">Summon</a>
+                        <a href='../Clearance_and_Forms/Clearances/BusinessPermit.php?offender=$offender_name&complainant=$name&issue=$incident_title' class=\"btn btn-sm btn-success\">Summon</a>
                         <a href='remove_person.php?id=$off_id&case=$case_no&person_type=offender' class=\"btn btn-sm btn-danger\">Remove</a>
                     </td>
                 </tr>";

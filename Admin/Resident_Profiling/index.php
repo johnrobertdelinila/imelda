@@ -32,6 +32,15 @@ include("../../connection.php");
       </div>
     </nav>
 <div class="container" style="margin-top:120px;">
+<div class="form-group">
+  <label for="sel1">Filter by Year:</label>
+  <select class="form-control" id="sel1">
+   <option>2019</option>
+    <option>2020</option>
+    <option selected>2021</option>
+    <option>2022</option>
+  </select>
+</div>
 <canvas id="myChart" width="250" height="250"></canvas>
 <?php 
 $query = "SELECT res_ID,res_fName,res_mName,res_lName,rs.suffix,rms.marital_Name,rg.gender_Name,rr.religion_Name,ro.occupation_Name,ros.occuStat_Name,res_Date_Record,rc.country_citizenship,res_Bday,TIMESTAMPDIFF(YEAR,res_Bday,CURDATE()) AS age,
@@ -286,7 +295,7 @@ $Total_Senior = mysqli_num_rows($sql);
 ?>
 <script>
 var ctx = document.getElementById("myChart").getContext('2d');
-var myChart = new Chart(ctx, {
+const config = {
     type: 'pie',
     data: {
         labels: ["Total Residents [<?php echo $Total_resident;?>]",
@@ -352,12 +361,20 @@ var myChart = new Chart(ctx, {
             }]
         }
     }
-});
+};
+var myChart = new Chart(ctx, config);
+
+$(document).ready(() => {
+      $('#sel1').change(() => {
+         myChart.destroy();
+         myChart = new Chart(ctx, config);
+      });
+   });
 </script>
 </div>
 
 <script type="text/javascript">
-
+  
 </script>
 </body>
 </html>

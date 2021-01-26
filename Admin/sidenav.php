@@ -317,7 +317,7 @@ $user_data = mysqli_fetch_array($user_sql);
                          $suffix = $user_data['suffix'];
                       }
                     echo $_SESSION['Full_Name'] = $user_data['res_fName']." ".$user_data['res_mName']." ".$user_data['res_lName']." ".$suffix ?></h3>
-                    <h6><?php  echo $user_data['position_Name']?></h6>
+                    <h6><?php  echo (ISSET($user_data['position_Name']) && $user_data['position_Name'] != NULL ? $user_data['position_Name'] : "")?></h6>
                 </div>
 
                 <ul class="list-unstyled components">
@@ -363,7 +363,7 @@ $user_data = mysqli_fetch_array($user_sql);
                         <a  href="Report/viewreport" target = "FraDisplay">Report</a>
                     </li>
                     <?php 
-                    if ($user_data['commitee_assignID'] == 3) {
+                    if (ISSET($user_data['commitee_assignID']) && $user_data['commitee_assignID'] != NULL && $user_data['commitee_assignID'] == 3) {
                       ?>
                     <li>
                         <a  href="Setup/index" target = "FraDisplay">Setup</a>
