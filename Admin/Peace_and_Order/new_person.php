@@ -51,7 +51,7 @@
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
         <div class="modal-header">
-            <h5 class="modal-title">Select Offender</h5>
+            <h5 class="modal-title">Select Respondent</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
             </button>
@@ -115,7 +115,7 @@
                                         Involve Person Type
                                         <select class="form-control" id="involvepersontype">
                                             <option value="complainant">Complainant</option>
-                                            <option value="offender">Offender</option>
+                                            <option value="offender">Respondent</option>
                                         </select>
                                     </div>
                                     <br>
@@ -191,7 +191,7 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <h6 style="margin-top:30px;">
-                                                Offenders
+                                                Respondents
                                                 <a href="" data-toggle="modal" data-target="#residentListOffender">                    
                                                     <span id="show-off-resident" class="float-right text-danger">
                                                         Show Resident List&nbsp&nbsp&nbsp<i class="ti-arrow-circle-down"></i>
@@ -202,7 +202,7 @@
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <label>Offender Type</label>
+                                                <label>Respondent Type</label>
                                                 <select class="form-control" id="offendertype">
                                                     <option value="resident">Resident</option>
                                                     <option value="outsider">Non Resident</option>

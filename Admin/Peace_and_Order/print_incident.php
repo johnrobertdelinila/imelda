@@ -1,5 +1,8 @@
 <?php include_once('lib/init.php');
 
+session_start();
+var_dump($_SESSION);
+$full_name = $_SESSION['Full_Name'];
 
 if(isset($_GET['print']) && $_GET['print'] !== ""){
     $data_offender ='';
@@ -258,7 +261,8 @@ $layout="
                         <tr>
                             <td>
                                 <div class=\"text-center prepared-by\">
-                                    <span>Prepared By</span>
+                                    <span>$full_name</span>
+                                    <span>Inputed & Printed By</span>
                                 </div>
                             </td>
                             <td>

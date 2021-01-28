@@ -340,14 +340,14 @@ $datedate = date('Y-m-d H:i:s');
 
 $ORCTC = $ctcNo . "&&&&&" . $orNo;
 $sqlsli = "INSERT INTO form_release (res_ID, form_ID, purpose_ID, release_date)
-         VALUES ('$res_IDnow', 43, '$ORCTC','$datedate');";
+         VALUES ('$res_IDnow', 36, '$ORCTC','$datedate');";
 
          mysqli_query($conn, $sqlsli);
 ?>
 <!DOCTYPE>
 <html>
   <header>
-    <title>Certificate of Indigency</title>
+    <title>Certificate of Residency</title>
     <meta http-equiv="Content-Type" content ="text/html"; charset="utf-8" />
     <script type="text/javascript" src="../js/jspdf.min.js"></script>
     <script type="text/javascript" src="../js/html2canvas.js"></script>

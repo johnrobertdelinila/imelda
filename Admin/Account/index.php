@@ -57,7 +57,7 @@ LEFT JOIN user_status us ON ua.status_ID = us.status_ID ORDER BY ua.status_ID AS
           <tr>
             <th>Name</th>
             <th>Username</th>
-            <th>Password</th>
+            <!-- <th>Password</th> -->
             <th>Level Access</th>
             <th>Status</th>
             <th>Action</th>
@@ -87,7 +87,7 @@ LEFT JOIN user_status us ON ua.status_ID = us.status_ID ORDER BY ua.status_ID AS
            <tr <?php echo $td_color?>>
             <td><?php echo $acc_data['res_fName']." ".$acc_data['res_mName'].". ".$acc_data['res_lName']." ".$suffix ?></td>
             <td><?php echo $acc_data['acc_username'] ?></td>
-            <td><?php echo $crypt ?></td>
+            
             <td><?php echo $acc_data['position_Name'] ?></td>
             <td><span class="label label-<?php echo $color ?>"><?php echo $acc_data['status_Name']?></span></td>
             <td>
@@ -358,9 +358,10 @@ $(document).ready( function () {
         <h4 class="modal-title">Add Account</h4>
       </div>
       <div class="modal-body">
+        <h5>Asterisk <strong style="color: red;">*</strong> fields are required.</h5>
         <form class="form-horizontal" action= "action.php" method="post">
          <div class="form-group">
-        <label class="col-sm-2 control-label">Fullname</label>
+        <label class="col-sm-2 control-label">Fullname <strong style="color: red;">*</strong></label>
         <div class="col-sm-10">
           <select name="official_ID" class="form-control">
           
@@ -389,27 +390,27 @@ WHERE  visibility = 1");
         </div>
       </div>
       <div class="form-group">
-        <label class="col-sm-2 control-label">Username</label>
+        <label class="col-sm-2 control-label">Username <strong style="color: red;">*</strong></label>
         <div class="col-sm-10">
           <input class="form-control" id="focusedInput" type="text" placeholder="Enter Username" name="username" required >
         </div>
       </div>
 
       <div class="form-group">
-        <label class="col-sm-2 control-label">Password</label>
+        <label class="col-sm-2 control-label">Password <strong style="color: red;">*</strong></label>
         <div class="col-sm-10">
           <input class="form-control" id="focusedInput" type="password" placeholder="Enter Password" name="password" required >
         </div>
       </div>
 <div class="form-group">
-        <label class="col-sm-2 control-label">Confirm</label>
+        <label class="col-sm-2 control-label">Confirm <strong style="color: red;">*</strong></label>
         <div class="col-sm-10">
           <input class="form-control" id="focusedInput" type="password" placeholder="Confirm Password" name="conpassword" required >
         </div>
       </div>
 
       <div class="form-group">
-        <label class="col-sm-2 control-label">Position</label>
+        <label class="col-sm-2 control-label">Position <strong style="color: red;">*</strong></label>
         <div class="col-sm-10">
           <select class="form-control" id="mySelect" onchange="myFunction()" name="position">
           
@@ -428,7 +429,7 @@ WHERE  visibility = 1");
       </div>
 
       <div class="form-group" id="official">
-        <label class="col-sm-2 control-label">Committee</label>
+        <label class="col-sm-2 control-label">Committee </label>
         <div class="col-sm-10">
           <select name="Commitee" class="form-control">
             <option value="1" style="display: none;"></option>

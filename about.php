@@ -29,6 +29,7 @@
           <ul class="nav navbar-nav">
             <li><a href="index">Home</a></li>
             <li class="active"><a href="about">About</a></li>
+            <li><a href="announcement">Announcement</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>

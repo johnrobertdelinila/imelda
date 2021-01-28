@@ -66,7 +66,7 @@ if(isset($_GET['case']) && $_GET['case'] !== ""){
                         
                     </td>
                     <td>
-                        Offender
+                        Respondent
                     </td>
                     <td>
                         <a href='edit_person.php?id=$off_id&case=$case_no&person_type=offender' class=\"btn btn-sm btn-warning\">Edit details</a>

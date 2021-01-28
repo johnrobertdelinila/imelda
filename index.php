@@ -56,6 +56,7 @@ if(isset($_SESSION['user_session']))
           <ul class="nav navbar-nav">
             <li class="active"><a href="index">Home</a></li>
             <li><a href="about">About</a></li>
+            <li><a href="announcement">Announcement</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>

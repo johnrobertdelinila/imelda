@@ -283,7 +283,9 @@ $resultlogo1=mysqli_fetch_array($sth1);
     $ctrl_id = $row14['clearance_id'];
     $ctrl_purpose = $row14['purpose_id'];
     $price = $row14['price'];
-    $ctrlout = "2018".$ctrl_purpose.$ctrl_id.$price;
+    $digits = 3;
+    $random = rand(pow(10, $digits-1), pow(10, $digits)-1);
+    $ctrlout = "2018".$ctrl_purpose.$ctrl_id.$price.$random;
   }
 ?>
 <!--end control #-->

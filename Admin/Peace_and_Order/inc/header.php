@@ -44,6 +44,17 @@
         .dropdown-item{
             line-height: 20px!important;
         }
+        .isDisabled {
+            cursor: not-allowed;
+            opacity: 0.5;
+            pointer-events: none;
+        }
+        .isDisabled > a {
+            color: currentColor;
+            display: inline-block;  /* For IE11/ MS Edge bug */
+            pointer-events: none;
+            text-decoration: none;
+        }
         
     </style>
 

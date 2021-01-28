@@ -365,9 +365,9 @@ $user_data = mysqli_fetch_array($user_sql);
                     <?php 
                     if (ISSET($user_data['commitee_assignID']) && $user_data['commitee_assignID'] != NULL && $user_data['commitee_assignID'] == 3) {
                       ?>
-                    <li>
+                    <!-- <li>
                         <a  href="Setup/index" target = "FraDisplay">Setup</a>
-                    </li>
+                    </li> -->
                       <?php 
                     }
                     else{
