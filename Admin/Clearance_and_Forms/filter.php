@@ -53,7 +53,7 @@ $s1="";?>
                                         LEFT JOIN  resident_detail rd ON form_release.res_ID = rd.res_ID
                                         LEFT JOIN finance_clearance_set fcs ON form_release.form_ID = fcs.clearance_id
                                         LEFT JOIN finance_clearance_list fcl ON fcl.clearance_id = fcs.clearance_id
-                                        WHERE release_Date BETWEEN '$startd' AND '$endd'";
+                                        WHERE release_Date BETWEEN '$startd' AND '$endd' ORDER BY form_release.release_ID DESC";
 
                               $query = mysqli_query($conn, $sss);
                               $count = mysqli_num_rows($query);

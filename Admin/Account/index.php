@@ -48,7 +48,7 @@ LEFT JOIN brgy_official_detail bod ON ua.official_ID = bod.official_ID
 LEFT JOIN resident_detail rd ON bod.res_ID = rd.res_ID 
 LEFT JOIN ref_position rp ON rp.position_ID = ua.position_ID
 LEFT JOIN ref_suffixname rs ON rd.suffix_ID = rs.suffix_ID
-LEFT JOIN user_status us ON ua.status_ID = us.status_ID ORDER BY ua.status_ID ASC");
+LEFT JOIN user_status us ON ua.status_ID = us.status_ID WHERE ua.is_super_admin = 0 ORDER BY ua.acc_ID DESC");
 
 ?>
 <button class="btn btn-success btn-sm" data-toggle="modal" data-target="#add">ADD ACCOUNT</button><br><br>

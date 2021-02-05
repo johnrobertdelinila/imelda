@@ -1,10 +1,30 @@
+<?php 
+    session_start();
+    if(!ISSET($_SESSION['filter_blotter'])) {
+        $_SESSION['filter_blotter'] = NULL;
+    }
+?>
 <?php include('inc/header.php'); include_once('lib/init.php')?>
     <section class="content">
         <div class="row">
             <div class="" style="padding: 0px 15px;">
                 <div class="card">
                     <div class="card-header">
-                        <h5>Blotter (List of Incident) <a class="btn btn-primary btn-sm float-right" href="add_blotter.php">New Incident Report</a></h5>     
+                        <h5>Blotter (List of Incident) 
+                            <a class="btn btn-primary btn-sm float-right" href="add_blotter.php">New Incident Report</a>
+                        </h5>     
+
+                        <br>
+                        <div class="col-md-3 float-left">
+                            <div class="form-group">
+                                <label>Status Type</label>
+                                <select class="form-control" id="filter_blotter">
+                                    <option value="0" >All</option>
+                                    <option value="2" <?php echo ($_SESSION['filter_blotter'] == '2' ? 'selected' : '') ?>>Settled</option>
+                                    <option value="1" <?php echo ($_SESSION['filter_blotter'] == '1' ? 'selected' : '') ?>>Minutes of Hearing</option>
+                                </select>
+                            </div>
+                        </div>
                                               
                     </div>
                     <div class="card-body">
@@ -24,7 +44,7 @@
                             </thead>
                             <tbody>
                                 <?php
-                                    $results = $systems->getIncidentList();
+                                    $results = $systems->getIncidentList($_SESSION['filter_blotter']);
                                     if($results){
                                         while($row = mysqli_fetch_assoc($results)){
                                             $date_reported = date('F d, Y h:i a', strtotime($row['date_reported']));
@@ -154,3 +174,16 @@
 </div>
     
 <?php include('inc/footer.php');?>
+<script>
+    $(document).ready(() => {
+        $('#filter_blotter').change((e) => {
+            const val = $(e.currentTarget).val();
+            $.ajax({
+                url: 'set_session.php',
+                method: 'POST',
+                data: {val: val},
+                success: (data) => {window.open('incident.php', 'FraDisplay');}
+            })
+        });
+    });
+</script>

@@ -1,3 +1,8 @@
+<?php
+    include("connection.php");
+    $q = mysqli_query($conn,"SELECT * FROM `ref_brgy_info`");
+    $about = mysqli_fetch_array($q);   
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -52,7 +57,7 @@
                         <div class="text-center" style="padding: 5px;">
                             <img src="Img/about.jpg"  height="105" width="201">
                             <h4>Bgy. Management Information System</h4>
-                            <h5>is a computerized information-processing system</h5>
+                            <h5><?php echo mb_strimwidth($about[1], 0, 25, "..."); ?></h5>
                             <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#bmis">READ MORE</button>
                         </div>
                     </div>
@@ -71,7 +76,7 @@
                         <div class="text-center" style="padding: 5px;">
                             <img src="Img/about.jpg"  height="105" width="201">
                             <h4>Mission and Vision of Imelda Naguilian</h4>
-                            <h5>Mission: Enhance the quality of life of the people by providing adequate basic social services in an...</h5>
+                            <h5>Mission: <?php echo mb_strimwidth($about[2], 0, 25, "..."); ?></h5>
                             <button  type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#mv">READ MORE</button>
                         </div>
                     </div>
@@ -120,12 +125,7 @@
                         </h1>
                     </center>
                     <div>
-                        <p><img src="Img/Icon/indang logo.png" align="left"> &emsp; The Barangay Management Information System is a computerized information-processing system designed to support the activities, manages files and documents of company or organization.It
-                            can provide up to date information of the residents with relatively little effort on the part of the user of the system and put a huge amount of information within convenient and comfortable read. Not mentioning the security
-                            and integrity of the document, it also provides.
-                            <Br><br>&emsp; The barangay officials will no longer have a hard time when it comes to organizing the data needed by the residents. it will help the barangay to solve the difficulty in retrieving large volume of residents information.
-                            It makes things more convenient for the residents and reduces the number of visits in the barangay. &emsp; What will the BMIS achieve? To Address barangay efficiency issues and have a Satisfied or happier residents of the barangay.
-                        </p>
+                        <p><img src="Img/Icon/indang logo.png" align="left"> &emsp; <?php echo $about['1'] ?></p>
 
 
 
@@ -156,12 +156,12 @@
                 <h1>
                     <font size="5" color="green"><b>Mission</b></font>
                 </h1>
-                <p> To improve and sustain the safe, peaceful and self-sufficient quality of life of all Naguilianon through the application of appropriate technologies and the responsible utilization of indigenous and other resources.</p>
+                <p> <?php echo $about['2'] ?></p>
 
                 <h1>
                     <font size="5" color="green"><b>Vision</b></font>
                 </h1>
-                <p> NAGUILIAN, the Home of the Original Basi is envisioned to be safe, peaceful, investor and tourist-friendly, technology-receptive, agricultural city of healthy, productive and God-loving citizens guided by dynamic, sincere and responsible leaders.</p>
+                <p> <?php echo $about['3'] ?></p>
             </center>
         </div>
       <div class="modal-footer">
@@ -226,13 +226,13 @@
                         <tr>
                             <td>
                                 <B>Number of Sitio</b> :</td>
-                            <td> 7 Sitios</td>
+                            <td> <?php echo $about['4'] ?> Sitios</td>
                         </tr>
 
                         <tr>
                             <td>
                                 <B>Number of Bridge</b> :</td>
-                            <td>4 bridges</td>
+                            <td> <?php echo $about['5'] ?> bridges</td>
                         </tr>
                     </table>
       </div>

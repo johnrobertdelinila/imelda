@@ -47,7 +47,7 @@ else{
       $sql = mysqli_query($conn,"SELECT * FROM `ref_position`  where position_Name NOT LIKE  'Barangay Official in %'");
       while ($pos = mysqli_fetch_array($sql)) {
       ?>
-      <option value="<?php echo $pos[0] ?>"><?php echo $pos[1] ?></option>
+      <option value="<?php echo $pos[0] ?>" <?php echo ($_REQUEST['position'] == $pos[1] ? 'selected':'') ?> ><?php echo $pos[1] ?></option>
       <?php
       }
       ?>

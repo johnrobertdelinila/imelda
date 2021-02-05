@@ -165,13 +165,13 @@ if(isset($_GET['case']) && $_GET['case'] !== ""){
                                         <div class="col-md-6 col-sm-12">
                                             <div class="form-group">
                                                 <label>Date of Incident</label>
-                                                <input value="<?php echo $date ?>" type="text" class="form-control">
+                                                <input value="<?php echo $date ?>" type="text" class="form-control" id="incidentDate2">
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-sm-12">
                                             <div class="form-group">
                                                 <label>Time of Incident</label>
-                                                <input  value="<?php echo $time ?>" type="text" class="form-control">
+                                                <input  value="<?php echo $time ?>" type="text" class="form-control" id="incidentTime2">
                                             </div>
                                         </div>
                                         <div class="col-md-12 col-sm-12">
@@ -226,5 +226,14 @@ if(isset($_GET['case']) && $_GET['case'] !== ""){
             const href = $(this).attr('href');
             window.location.href = href + "&date=" + date + "&time=" + time;
         });
+
+        $('#incidentTime2').datetimepicker({
+            format:'HH:mm a'
+        });
+
+        $('#incidentDate2').datetimepicker({
+            format:'DD/MM/YYYY'
+        });
+        
     });
 </script>

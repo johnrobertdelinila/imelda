@@ -115,7 +115,58 @@ include("../../connection.php");
             <!--/.nav-collapse -->
         </div>
     </nav>
+
     <div class="container" style="margin-top:120px;">
+      <?php
+        $q = mysqli_query($conn,"SELECT * FROM `ref_brgy_info`");
+        $about = mysqli_fetch_array($q);     
+      ?>
+      <form id="form_about">
+        <div class="col-md-12 col-sm-12">
+            <div class="form-group">
+                <label>BMIS</label>
+                <textarea style="height:250px!important;" class="form-control" name="bmis" id=""><?php echo $about['1'] ?></textarea>
+            </div>       
+        </div>
+
+        <div class="col-md-12 col-sm-12">
+            <div class="form-group">
+                <label>Vission</label>
+                <textarea style="height:150px!important;" class="form-control" name="vission" id=""><?php echo $about['3'] ?></textarea>
+            </div>       
+        </div>
+
+        <div class="col-md-12 col-sm-12">
+            <div class="form-group">
+                <label>Mission</label>
+                <textarea style="height:150px!important;" class="form-control" name="mission" id=""><?php echo $about['2'] ?></textarea>
+            </div>       
+        </div>
+
+        <div class="col-md-4 col-sm-4">
+            <div class="form-group">
+                <label>Number of Sitios</label>
+                <input type="number" value="<?php echo $about['4'] ?>" class="form-control" name="sitios" id="" />
+            </div>       
+        </div>
+
+        <div class="col-md-4 col-sm-4">
+            <div class="form-group">
+                <label>Number of Bridges</label>
+                <input type="number" value="<?php echo $about['5'] ?>" class="form-control" name="bridges" id="" />
+            </div>       
+        </div>
+
+        <div class="col-md-7 col-sm-7" style="margin-top:12px;">
+          <div class="form-group">
+            <button type="submit" name="save" class="btn btn-primary" value="update">Update</button> 
+          </div>
+        </div>
+
+      </form>
+    </div>
+
+    <div class="container" style="margin-top:120px; display: none;">
         <?php
       $sql = mysqli_query($conn,"SELECT * FROM `brgy_address_info`");
       $brgy_info = mysqli_fetch_array($sql);     
@@ -248,6 +299,28 @@ include("../../connection.php");
         $("#imgInp1").change(function() {
           readURL1(this);
         });
+
+
+        $(document).ready(() => {
+          $('#form_about').submit(function(e) {
+            e.preventDefault();
+
+            const objj = {};
+            $(this).serializeArray().forEach((d) => {
+              objj[d.name] = d.value;
+            }); 
+            
+            $.ajax({
+              url: 'setup_functions.php',
+              method: 'POST',
+              data: objj,
+              success: (data) => {
+                alert(data);
+              }
+            });
+          });
+        });
+
     </script>
 </body>
 

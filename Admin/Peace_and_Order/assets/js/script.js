@@ -3,10 +3,7 @@ $(function() {
 
     /* data table export buttons and table pagination */
     $('#blotter_table').DataTable({
-        // dom: 'Bfrtip',
-        // buttons: [
-        //     'copy', 'csv', 'excel', 'pdf', 'print'
-        // ]
+        aaSorting: [[ 0, "desc" ]]
     });
 
     $("input[name=optradio]").on('click', function(){
@@ -343,7 +340,6 @@ $(function() {
     $('#incidentDate').datetimepicker({
         format:'DD/MM/YYYY'
     });
-
 
     $.validator.setDefaults({
         highlight: function(element) {

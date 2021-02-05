@@ -94,7 +94,7 @@ LEFT JOIN ref_position rp ON rp.position_ID = bod.commitee_assignID
                 </button>
                 <ul class="dropdown-menu" role="menu">
                   <li><a  data-toggle="modal" data-target="#view" data-id="<?php echo $official['official_ID']; ?>"  id="view_off">View</a></li>
-                  <li><a data-toggle="modal" data-target="#edit" data-id="<?php echo $official['official_ID']; ?>"  id="edit_off">Edit</a></li>
+                  <li><a data-toggle="modal" data-target="#edit" position="<?php echo $official['position_Name']?>" data-id="<?php echo $official['official_ID']; ?>"  id="edit_off">Edit</a></li>
                   <?php 
                   if (empty($official['visibility'])) {
               
@@ -159,6 +159,7 @@ $(document).ready( function () {
       e.preventDefault();
       
       var uid = $(this).data('id');   // it will get id of clicked row
+      const position = $(this).attr('position');
       
       $('#edit-content').html(''); // leave it blank before ajax call
       $('#edit-loader').show();      // load ajax loader
@@ -166,7 +167,7 @@ $(document).ready( function () {
       $.ajax({
         url: 'modal_edit.php',
         type: 'POST',
-        data: 'id='+uid,
+        data: {id: uid, position: position},
         dataType: 'html'
       })
       .done(function(data){

@@ -282,6 +282,7 @@ $user_sql = mysqli_query($conn,"SELECT rp.position_Name,rd.*,rs.suffix,bod.commi
 INNER JOIN resident_detail rd ON rd.res_ID = bod.res_ID
 LEFT JOIN ref_position rp ON rp.position_ID = bod.commitee_assignID
 LEFT JOIN ref_suffixname rs ON rs.suffix_ID = rd.suffix_ID
+LEFT JOIN user_account ua ON ua.position_ID = rp.position_ID
 WHERE 
 bod.official_ID = '$official_ID'");
 $user_data = mysqli_fetch_array($user_sql);
@@ -332,9 +333,16 @@ $user_data = mysqli_fetch_array($user_sql);
                     <li>
                         <a  href="Resident_Profiling/index" target = "FraDisplay">Dashboard</a>
                     </li>
+                    <?php 
+                    if ((ISSET($user_data['commitee_assignID']) && $user_data['commitee_assignID'] != NULL && $user_data['commitee_assignID'] == 3)
+                        || $user_data['is_super_admin'] = 1) {
+                      ?>
                     <li>
                         <a  href="Account/index" target = "FraDisplay">Account</a>
                     </li>
+                      <?php 
+                    }
+                    ?>
                     <li>
                         <a  href="Clearance_and_Forms/index" target = "FraDisplay">Forms</a>
                     </li>
@@ -363,11 +371,12 @@ $user_data = mysqli_fetch_array($user_sql);
                         <a  href="Report/viewreport" target = "FraDisplay">Report</a>
                     </li>
                     <?php 
-                    if (ISSET($user_data['commitee_assignID']) && $user_data['commitee_assignID'] != NULL && $user_data['commitee_assignID'] == 3) {
+                    if ((ISSET($user_data['commitee_assignID']) && $user_data['commitee_assignID'] != NULL && $user_data['commitee_assignID'] == 3)
+                    || $user_data['is_super_admin'] = 1) {
                       ?>
-                    <!-- <li>
-                        <a  href="Setup/index" target = "FraDisplay">Setup</a>
-                    </li> -->
+                    <li>
+                        <a  href="Setup/index" target = "FraDisplay">Setup About</a>
+                    </li>
                       <?php 
                     }
                     else{

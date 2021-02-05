@@ -8,9 +8,13 @@ class allfunctions extends database{
 
     }
 
-    public function getIncidentList(){
+    public function getIncidentList($param){
         $query = 'SELECT * from ms_incident as mi';
-        $query .= ' LEFT JOIN ms_reporting_person as rp on rp.incident_id = mi.incident_id group by mi.incident_id';
+        $query .= ' INNER JOIN ms_reporting_person as rp on rp.incident_id = mi.incident_id';
+        if($param != null) {
+            $query .= ' WHERE mi.status = ' . $param;
+        }
+        $query .= ' GROUP BY mi.incident_id';
         // var_dump($query);
         $incidents = $this->db->select($query);
         return $incidents;
