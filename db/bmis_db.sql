@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.1
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Jan 26, 2021 at 04:49 AM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.4.3
+-- Host: localhost
+-- Generation Time: Feb 07, 2021 at 11:53 AM
+-- Server version: 10.4.17-MariaDB
+-- PHP Version: 7.3.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -217,6 +216,8 @@ CREATE TABLE `brgy_address_info` (
 --
 
 INSERT INTO `brgy_address_info` (`brgy_Name`, `citymun_Name`, `province_Name`, `caller_Code`) VALUES
+('Imelda', 'NAGUILIAN', 'LA UNION', 'setter'),
+('Imelda', 'NAGUILIAN', 'LA UNION', 'setter'),
 ('Imelda', 'NAGUILIAN', 'LA UNION', 'setter');
 
 -- --------------------------------------------------------
@@ -314,6 +315,7 @@ CREATE TABLE `finance_clearance_list` (
 INSERT INTO `finance_clearance_list` (`clearance_id`, `clearance_form`) VALUES
 (33, 'Barangay Clearance'),
 (34, 'Building Permit'),
+(43, 'Certificate of Indigency'),
 (36, 'Certificate of Residency'),
 (37, 'Cutting Trees'),
 (38, 'Electrical Permit'),
@@ -608,7 +610,12 @@ INSERT INTO `form_release` (`release_ID`, `res_ID`, `form_ID`, `purpose_ID`, `re
 (240, 2, 33, '&&&&&', '2021-01-22 04:01:23'),
 (241, 1, 33, '&&&&&', '2021-01-22 04:30:52'),
 (242, 1, 33, '&&&&&', '2021-01-22 05:16:07'),
-(243, 1, 33, '&&&&&', '2021-01-22 05:21:22');
+(243, 1, 33, '&&&&&', '2021-01-22 05:21:22'),
+(244, 15, 33, '&&&&&', '2021-01-27 23:59:25'),
+(245, 15, 33, '&&&&&', '2021-01-28 00:03:04'),
+(246, 2, 33, '0&&&&&', '2021-01-28 00:03:12'),
+(247, 15, 33, '&&&&&', '2021-02-01 10:18:12'),
+(248, 2, 33, '&&&&&0', '2021-02-01 10:21:10');
 
 -- --------------------------------------------------------
 
@@ -810,22 +817,8 @@ CREATE TABLE `ms_incident` (
 
 INSERT INTO `ms_incident` (`incident_id`, `case_incident`, `incident_title`, `date_incident`, `time_incident`, `date_reported`, `location`, `narrative`, `settlement`, `status`, `blotterType_id`) VALUES
 (11, 'civil', 'Civil Rights', '1970-01-01', '11:58:00', '2021-01-21 21:17:22', 'asdfsdf', 'sadfadsf', '', 2, 1),
-(12, 'criminal', 'Sexual Harassment', '0000-00-00', '03:00:00', '2020-11-09 00:27:59', 'Sitio Apir Malakit', 'May black eye, dumudugo ', NULL, 3, 1),
-(23, 'criminal', 'harrasment', '1970-01-01', '12:00:00', '2021-01-21 19:58:55', 'brgy imelda', 'hghjkhgkj', '', 1, 1),
-(24, 'criminal', 'harrasment', '1970-01-01', '12:00:00', '2021-01-21 19:59:12', 'brgy imelda', 'hghjkhgkj', '', 1, 1),
-(25, 'criminal', 'harrasment', '1970-01-01', '12:00:00', '2021-01-21 19:59:25', 'brgy imelda', 'hghjkhgkj', '', 1, 1),
-(26, 'criminal', 'harrasment', '1970-01-01', '12:00:00', '2021-01-21 19:59:27', 'brgy imelda', 'hghjkhgkj', '', 1, 1),
-(27, 'criminal', 'harrasment', '1970-01-01', '12:00:00', '2021-01-21 19:59:27', 'brgy imelda', 'hghjkhgkj', '', 1, 1),
-(28, 'criminal', 'harrasment', '1970-01-01', '12:00:00', '2021-01-21 19:59:28', 'brgy imelda', 'hghjkhgkj', '', 1, 1),
-(29, 'criminal', 'harrasment', '1970-01-01', '12:00:00', '2021-01-21 19:59:28', 'brgy imelda', 'hghjkhgkj', '', 1, 1),
-(30, 'criminal', 'harrasment', '1970-01-01', '12:00:00', '2021-01-21 19:59:28', 'brgy imelda', 'hghjkhgkj', '', 1, 1),
-(31, 'criminal', 'harrasment', '1970-01-01', '12:00:00', '2021-01-21 19:59:28', 'brgy imelda', 'hghjkhgkj', '', 1, 1),
-(32, 'criminal', 'harrasment', '1970-01-01', '12:00:00', '2021-01-21 19:59:37', 'brgy imelda', 'hghjkhgkj', '', 1, 1),
-(33, 'criminal', 'harrasment', '1970-01-01', '12:00:00', '2021-01-21 19:59:55', 'brgy imelda', 'hghjkhgkj', '', 1, 1),
-(34, 'criminal', 'harrasment', '1970-01-01', '12:00:00', '2021-01-21 19:59:57', 'brgy imelda', 'hghjkhgkj', '', 1, 1),
-(35, 'criminal', 'harrasment', '1970-01-01', '12:00:00', '2021-01-21 19:59:57', 'brgy imelda', 'hghjkhgkj', '', 1, 1),
-(36, 'criminal', 'harrasment', '1970-01-01', '12:00:00', '2021-01-21 19:59:58', 'brgy imelda', 'hghjkhgkj', '', 1, 1),
-(37, 'criminal', 'harrasment', '1970-01-01', '12:00:00', '2021-01-21 19:59:58', 'brgy imelda', 'hghjkhgkj', '', 1, 1);
+(12, 'criminal', 'Sexual Harassment', '0000-00-00', '03:00:00', '2020-11-09 00:27:59', 'Sitio Apir Malakit', 'May black eye, dumudugo ', NULL, 1, 1),
+(23, 'criminal', 'harrasment', '1970-01-01', '12:00:00', '2021-01-21 19:58:55', 'brgy imelda', 'hghjkhgkj', '', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -892,31 +885,7 @@ CREATE TABLE `ms_reporting_person` (
 INSERT INTO `ms_reporting_person` (`person_id`, `incident_id`, `res_ID`, `name`, `gender`, `phone_number`, `address`, `complainantType_ID`) VALUES
 (3, 11, 4, NULL, NULL, NULL, NULL, 1),
 (4, 12, 6, NULL, NULL, NULL, NULL, 1),
-(5, 13, NULL, '', '', '', '', 2),
-(6, 14, 15, NULL, NULL, NULL, NULL, 1),
-(7, 15, 15, NULL, NULL, NULL, NULL, 1),
-(8, 16, 15, NULL, NULL, NULL, NULL, 1),
-(9, 17, 15, NULL, NULL, NULL, NULL, 1),
-(10, 18, 15, NULL, NULL, NULL, NULL, 1),
-(11, 19, 15, NULL, NULL, NULL, NULL, 1),
-(12, 20, 15, NULL, NULL, NULL, NULL, 1),
-(13, 21, 15, NULL, NULL, NULL, NULL, 1),
-(14, 22, 15, NULL, NULL, NULL, NULL, 1),
-(15, 23, 10, NULL, NULL, NULL, NULL, 1),
-(16, 24, 10, NULL, NULL, NULL, NULL, 1),
-(17, 25, 10, NULL, NULL, NULL, NULL, 1),
-(18, 26, 10, NULL, NULL, NULL, NULL, 1),
-(19, 27, 10, NULL, NULL, NULL, NULL, 1),
-(20, 28, 10, NULL, NULL, NULL, NULL, 1),
-(21, 29, 10, NULL, NULL, NULL, NULL, 1),
-(22, 31, 10, NULL, NULL, NULL, NULL, 1),
-(23, 30, 10, NULL, NULL, NULL, NULL, 1),
-(24, 32, 10, NULL, NULL, NULL, NULL, 1),
-(25, 33, 10, NULL, NULL, NULL, NULL, 1),
-(26, 34, 10, NULL, NULL, NULL, NULL, 1),
-(27, 35, 10, NULL, NULL, NULL, NULL, 1),
-(28, 36, 10, NULL, NULL, NULL, NULL, 1),
-(29, 37, 10, NULL, NULL, NULL, NULL, 1);
+(15, 23, 10, NULL, NULL, NULL, NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -1098,17 +1067,19 @@ INSERT INTO `ref_brgy` (`brgy_ID`, `brgy_psgcCode`, `brgy_Name`, `region_Code`, 
 
 CREATE TABLE `ref_brgy_info` (
   `brgyInfo_ID` int(11) UNSIGNED NOT NULL COMMENT 'Primary Key',
-  `brgyInfo_History` text DEFAULT NULL,
+  `brgyInfo_History` longtext DEFAULT NULL,
   `brgyInfo_Mission` text DEFAULT NULL,
-  `brgyInfo_Vision` text DEFAULT NULL
+  `brgyInfo_Vision` text DEFAULT NULL,
+  `brgyInfo_Sitios` text DEFAULT NULL,
+  `brgyInfo_Bridges` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `ref_brgy_info`
 --
 
-INSERT INTO `ref_brgy_info` (`brgyInfo_ID`, `brgyInfo_History`, `brgyInfo_Mission`, `brgyInfo_Vision`) VALUES
-(1, '<div class=\"history\">asdasdasdasdasdasd</div>', '<div class=\"mission\">asdasdasdasdasdcxc3123</div>', '<div class=\"vission\">123zda123123213213</div>');
+INSERT INTO `ref_brgy_info` (`brgyInfo_ID`, `brgyInfo_History`, `brgyInfo_Mission`, `brgyInfo_Vision`, `brgyInfo_Sitios`, `brgyInfo_Bridges`) VALUES
+(1, 'The Barangay Management Information System is a computerized information-processing system designed to support the activities, manages files and documents of company or organization.It can provide up to date information of the residents with relatively little effort on the part of the user of the system and put a huge amount of information within convenient and comfortable read. Not mentioning the security and integrity of the document, it also provides. \r\n\r\nThe barangay officials will no longer have a hard time when it comes to organizing the data needed by the residents. it will help the barangay to solve the difficulty in retrieving large volume of residents information. It makes things more convenient for the residents and reduces the number of visits in the barangay. What will the BMIS achieve? To Address barangay efficiency issues and have a Satisfied or happier residents of the barangay.', 'To improve and sustain the safe, peaceful and self-sufficient quality of life of all Naguilianon through the application of appropriate technologies and the responsible utilization of indigenous and other resources.\r\n\r\n', 'NAGUILIAN, the Home of the Original Basi is envisioned to be safe, peaceful, investor and tourist-friendly, technology-receptive, agricultural city of healthy, productive and God-loving citizens guided by dynamic, sincere and responsible leaders.', '6', '4');
 
 -- --------------------------------------------------------
 
@@ -4555,19 +4526,21 @@ CREATE TABLE `user_account` (
   `acc_password` varchar(255) CHARACTER SET utf8 DEFAULT NULL COMMENT 'password of your acc',
   `status_ID` int(11) UNSIGNED DEFAULT NULL COMMENT 'foreign key of status id for acc_status',
   `acc_created` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp() COMMENT 'account created',
-  `device_Id` int(11) DEFAULT NULL
+  `device_Id` int(11) DEFAULT NULL,
+  `is_super_admin` tinyint(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user_account`
 --
 
-INSERT INTO `user_account` (`acc_ID`, `official_ID`, `position_ID`, `acc_username`, `acc_password`, `status_ID`, `acc_created`, `device_Id`) VALUES
-(1, 9, 3, 'secretary', '$2y$10$toeNsoPADv7Lzp9j7OWryuNdG6rVbMNS/Nb/ozhbtXsD8YcDClQKa', 2, '2021-01-22 04:48:29', 0),
-(4, 5, 2, 'captain', '$2y$10$toeNsoPADv7Lzp9j7OWryuNdG6rVbMNS/Nb/ozhbtXsD8YcDClQKa', 1, '2020-09-28 03:13:31', 0),
-(13, 2, 4, 'treasurer', '$2y$10$toeNsoPADv7Lzp9j7OWryuNdG6rVbMNS/Nb/ozhbtXsD8YcDClQKa', 2, '2021-01-22 04:48:00', NULL),
-(16, 18, 17, 'marlyn', '$2y$10$4axHOE6xh2aQjRDXjWTBK.QYsVDXSSxv2XzBRIuBSVFHcQAmk2Pru', 1, '2021-01-22 01:34:36', NULL),
-(17, 15, 15, 'FERDI', '$2y$10$hj8FUXiDbfDEWNnW.Uuo0Oh1lVncPJdiChl6qLmT3KdGCRa5F96X.', 1, '2021-01-22 02:48:03', NULL);
+INSERT INTO `user_account` (`acc_ID`, `official_ID`, `position_ID`, `acc_username`, `acc_password`, `status_ID`, `acc_created`, `device_Id`, `is_super_admin`) VALUES
+(1, 9, 3, 'secretary', '$2y$10$toeNsoPADv7Lzp9j7OWryuNdG6rVbMNS/Nb/ozhbtXsD8YcDClQKa', 1, '2021-01-29 07:26:10', NULL, 0),
+(4, 5, 2, 'captain', '$2y$10$toeNsoPADv7Lzp9j7OWryuNdG6rVbMNS/Nb/ozhbtXsD8YcDClQKa', 1, '2021-01-29 07:26:07', NULL, 0),
+(13, 2, 4, 'treasurer', '$2y$10$toeNsoPADv7Lzp9j7OWryuNdG6rVbMNS/Nb/ozhbtXsD8YcDClQKa', 2, '2021-01-22 04:48:00', NULL, 0),
+(16, 18, 17, 'marlyn', '$2y$10$4axHOE6xh2aQjRDXjWTBK.QYsVDXSSxv2XzBRIuBSVFHcQAmk2Pru', 1, '2021-01-22 01:34:36', NULL, 0),
+(17, 15, 15, 'FERDI', '$2y$10$hj8FUXiDbfDEWNnW.Uuo0Oh1lVncPJdiChl6qLmT3KdGCRa5F96X.', 1, '2021-01-22 02:48:03', NULL, 0),
+(18, 16, 16, 'super_admin', '$2y$10$toeNsoPADv7Lzp9j7OWryuNdG6rVbMNS/Nb/ozhbtXsD8YcDClQKa', 1, '2021-01-29 07:49:06', NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -5384,7 +5357,7 @@ ALTER TABLE `finance_fundoperation_psset`
 -- AUTO_INCREMENT for table `form_release`
 --
 ALTER TABLE `form_release`
-  MODIFY `release_ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=244;
+  MODIFY `release_ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=249;
 
 --
 -- AUTO_INCREMENT for table `form_request`
@@ -5516,7 +5489,7 @@ ALTER TABLE `sms_category`
 -- AUTO_INCREMENT for table `user_account`
 --
 ALTER TABLE `user_account`
-  MODIFY `acc_ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Primary Key', AUTO_INCREMENT=18;
+  MODIFY `acc_ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Primary Key', AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `youth_investment`
