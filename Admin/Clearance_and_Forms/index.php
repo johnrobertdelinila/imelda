@@ -54,7 +54,7 @@ $s3="";
                           header("Location:Creator/CreateBusinessPermit.php?res_ID=$var_id&or=$var_or&ctc=$var_crc");
                         }
                         else if($var_forms=="Certificate of Residency" || $var_forms=="Residency"){
-                          header("Location:Clearances/CertificateOfResidency.php?res_ID=$var_id&or=$var_or&crc=$var_crc");
+                          header("Location:Creator/CreateCertificateOfIndigency.php?res_ID=$var_id&or=$var_or&ctc=$var_crc");
                         }
                         else if($var_forms=="Certificate of Indigency" || $var_forms=="Indigency"){
                           header("Location:Clearances/CertificateOfIndegency.php?res_ID=$var_id&or=$var_or&crc=$var_crc");
