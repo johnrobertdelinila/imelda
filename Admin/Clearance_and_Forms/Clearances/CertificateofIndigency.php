@@ -393,7 +393,7 @@ $sqlsli = "INSERT INTO form_release (res_ID, form_ID, purpose_ID, release_date)
         OFFICE OF THE BARANGAY HEAD
       </div>
       <div class="header tag1">
-        Certificate of Residency
+        Certificate of Indigency
       </div>
         <div class="c-wrapper">
           <div class="officials center">

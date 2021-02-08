@@ -27,7 +27,9 @@ include("../../connection.php");
 * {margin: 0; padding: 0;}
 body {
     text-align: center;
-    min-height: 1900px;
+    height: 480px;
+    overflow: auto;  
+    white-space: nowrap;
   }
 
     </style>
@@ -214,13 +216,13 @@ var bigOrganogramData = [
   //  "img": "../common/img/avatar-12.png",
   //  "parent": 2
   // },
-  {
-    "id": "3",
-    "text": "Barangay Officials",
-    "title": "",
-    "img": "",
-    "parent": 1
-  },
+  // {
+  //   "id": "3",
+  //   "text": "Barangay Officials",
+  //   "title": "",
+  //   "img": "",
+  //   "parent": 1
+  // },
   
   {
     "id": "4",
@@ -302,55 +304,43 @@ var bigOrganogramData = [
   //   "img": "../common/img/avatar-15.png",
   //   "parent": "3.2.1.1"
   // }
-  <?php 
-// $name = array();
-// while ($official_data = mysqli_fetch_array($sql)) {
-//  $suffix = $official_data['suffix'];
-//  if ($suffix == "N/A") {
-//    $suffix = "";
-//  }
-//  else{
-//     $suffix = $official_data['suffix'];
-//  }
-//   $name[] =  $official_data['res_fName'].' '.$official_data['res_mName'].' '.$official_data['res_lName'].' '.$suffix;;
-// }
+<?php 
+  function loop(array $parents, $need,$index,$name,$position_Name,$official_img)
+  {
+      
+      $children = [];
+      $isLast = $need === 1;
+      $lastKey = count($parents) - 1;
+      
+      foreach ($parents as $key => $parent) {
+          $p_name = $name[$index];
+          $pos_Name = $position_Name[$index];
+          $img = $official_img[$index];
+          $id = $parent === 3 ? $key + 1 : 1;
+          $children[] = $child = "$parent.$id";
+          $comma = $isLast && $key === $lastKey ? '' : ',';
+          echo "{
+          \"id\":\"$child\",
+          \"text\": \"$pos_Name\",
+          \"title\": \"$p_name\",
+          \"width\": 350,
+          \"img\": \"$img\",
+          \"parent\":\"1\"
+          }$comma";
+      }
+      $index++;
+      $need--;
 
-function loop(array $parents, $need,$index,$name,$position_Name,$official_img)
-{
-    
-    $children = [];
-    $isLast = $need === 1;
-    $lastKey = count($parents) - 1;
-    
-    foreach ($parents as $key => $parent) {
-        $p_name = $name[$index];
-        $pos_Name = $position_Name[$index];
-        $img = $official_img[$index];
-        $id = $parent === 3 ? $key + 1 : 1;
-        $children[] = $child = "$parent.$id";
-        $comma = $isLast && $key === $lastKey ? '' : ',';
-        echo "{
-        \"id\":\"$child\",
-        \"text\": \"$pos_Name\",
-        \"title\": \"$p_name\",
-        \"width\": 350,
-        \"img\": \"$img\",
-        \"parent\":\"$parent\"
-         }$comma";
-    }
-    $index++;
-    $need--;
+      if ($need) {
+          return loop($children, $need,$index,$name,$position_Name,$official_img);
+      }
 
-    if ($need) {
-        return loop($children, $need,$index,$name,$position_Name,$official_img);
-    }
+      return $children;
+  }
 
-    return $children;
-}
-
-$index = 0;
-loop([3], $count_official,$index,$name,$position_Name,$official_img);
-  ?>
+  $index = 0;
+  loop([3], $count_official,$index,$name,$position_Name,$official_img);
+?>
 
 ];
 

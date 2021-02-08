@@ -43,44 +43,40 @@ $s3="";
               }
               else{
 
-                        if($var_forms=="Barangay Clearance"){
-                          header("Location:Clearances/BarangayClearance.php?res_ID=$var_id&or=$var_or&crc=$var_crc");
-                        }
-                        else if($var_forms=="Building Permit" || $var_forms=="Barangay Building Permit" ){
-                          header("Location:Creator/CreateBuildingPermit.php?res_ID=$var_id&or=$var_or&ctc=$var_crc");
-                        }
-                        else if($var_forms=="Barangay Business Permit" || $var_forms=="Business Permit"){
-
-                          header("Location:Creator/CreateBusinessPermit.php?res_ID=$var_id&or=$var_or&ctc=$var_crc");
-                        }
-                        else if($var_forms=="Certificate of Indigency" || $var_forms=="Indigency"){
-                          header("Location:Clearances/CertificateOfIndigency.php?res_ID=$var_id&or=$var_or&crc=$var_crc");
-                        }
-                        else if($var_forms=="Certificate of Residency" || $var_forms=="Residency"){
-                          header("Location:Clearances/CertificateOfResidency.php?res_ID=$var_id&or=$var_or&crc=$var_crc");
-                        }
-                        else if($var_forms=="Barangay Logging" || $var_forms=="Logging Permit" ||$var_forms=="Logging" || $var_forms=="Tree Cutting" || $var_forms=="Cutting Trees"){
-                          header("Location:Clearances/CuttingTrees.php?res_ID=$var_id&or=$var_or&crc=$var_crc");
-                        }
-                        else if($var_forms=="Electrical Permit" || $var_forms=="Barangay Electrical Permit"){
-                          header("Location:Clearances/ElectricalPermit.php?res_ID=$var_id&or=$var_or&crc=$var_crc");
-                        }
-                        else if($var_forms=="Barangay Fencing" || $var_forms=="Fencing" || $var_forms=="Fencing Permit" || $var_forms=="Barangay Fencing Permit"){
-                          header("Location:Creator/CreateFencingPermit.php?res_ID=$var_id&or=$var_or&ctc=$var_crc");
-                        }
-                        else if($var_forms=="Working Permit" || $var_forms=="Barangay Working Permit"){
-                          header("Location:Creator/CreateWorkingPermit.php?res_ID=$var_id&or=$var_or&crc=$var_crc");
-                        }
-                        else if($var_forms=="Film Making" || $var_forms=="Film Making Permit" || $var_forms=="Shooting Permit"){
-                          header("Location:Creator/CreateFilmMakingPermit.php?res_ID=$var_id&or=$var_or&crc=$var_crc");
-                        }
-                        else if($var_forms=="Barangay Transient Information" || $var_forms=="Transient Information" || $var_forms=="Barangay Transient"){
-                          header("Location:Creator/CreateTransientInformation.php?or=$var_or&ctc=$var_crc");
-                        }
-
-
-                        else{$s3 = "template not available!!";}
-                    }
+                  if($var_forms=="Barangay Clearance"){
+                    header("Location:Clearances/BarangayClearance.php?res_ID=$var_id&or=$var_or&crc=$var_crc");
+                  }
+                  else if($var_forms=="Building Permit" || $var_forms=="Barangay Building Permit" ){
+                    header("Location:Creator/CreateBuildingPermit.php?res_ID=$var_id&or=$var_or&ctc=$var_crc");
+                  }
+                  else if($var_forms=="Barangay Business Permit" || $var_forms=="Business Permit"){
+                    header("Location:Creator/CreateBusinessPermit.php?res_ID=$var_id&or=$var_or&ctc=$var_crc");
+                  }
+                  else if($var_forms=="Certificate of Indigency" || $var_forms=="Indigency"){
+                    header("Location:Clearances/CertificateOfIndigency.php?res_ID=$var_id&or=$var_or&crc=$var_crc");
+                  }
+                  else if($var_forms=="Certificate of Residency" || $var_forms=="Residency"){
+                    header("Location:Clearances/CertificateOfResidency.php?res_ID=$var_id&or=$var_or&crc=$var_crc");
+                  }
+                  else if($var_forms=="Barangay Logging" || $var_forms=="Logging Permit" ||$var_forms=="Logging" || $var_forms=="Tree Cutting" || $var_forms=="Cutting Trees"){
+                    header("Location:Clearances/CuttingTrees.php?res_ID=$var_id&or=$var_or&crc=$var_crc");
+                  }
+                  else if($var_forms=="Electrical Permit" || $var_forms=="Barangay Electrical Permit"){
+                    header("Location:Clearances/ElectricalPermit.php?res_ID=$var_id&or=$var_or&crc=$var_crc");
+                  }
+                  else if($var_forms=="Barangay Fencing" || $var_forms=="Fencing" || $var_forms=="Fencing Permit" || $var_forms=="Barangay Fencing Permit"){
+                    header("Location:Creator/CreateFencingPermit.php?res_ID=$var_id&or=$var_or&ctc=$var_crc");
+                  }
+                  else if($var_forms=="Working Permit" || $var_forms=="Barangay Working Permit"){
+                    header("Location:Creator/CreateWorkingPermit.php?res_ID=$var_id&or=$var_or&crc=$var_crc");
+                  }
+                  else if($var_forms=="Film Making" || $var_forms=="Film Making Permit" || $var_forms=="Shooting Permit"){
+                    header("Location:Creator/CreateFilmMakingPermit.php?res_ID=$var_id&or=$var_or&crc=$var_crc");
+                  }
+                  else if($var_forms=="Barangay Transient Information" || $var_forms=="Transient Information" || $var_forms=="Barangay Transient"){
+                    header("Location:Creator/CreateTransientInformation.php?or=$var_or&ctc=$var_crc");
+                  }else{$s3 = "template not available!!";}
+                  }
 
 
         }

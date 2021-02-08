@@ -142,6 +142,7 @@ if(isset($_POST['function'])){
                         'time' => $_POST['time'],
                         'incident_location' => $_POST['incident_location'],
                         'narrative' => $_POST['narrative'],
+                        'forwarded' => $_POST['forwarded'],
                         'settlement' => (ISSET($_POST['settlement']) && $_POST['settlement'] != NULL ? $_POST['settlement'] : ""),
                     
                     'id' => $_POST['data_id'],

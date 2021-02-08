@@ -19,6 +19,7 @@
                 $narrative = $row['narrative'];
                 $settlement = $row['settlement'];
                 $status = $row['status'];
+                $forwarded = $row['forwarded'];
             }            
         }
         $offender = $systems->getOffender($_GET['edit'],true);
@@ -316,10 +317,19 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-10 col-sm-12">
+                                <div class="col-md-7 col-sm-12">
                                     <div class="form-group">
                                         <label>Incident title</label>
                                         <input type="text" class="form-control" value="<?php echo $incident_title?>" name="incident_title" id="">
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-12">
+                                    <div class="form-group">
+                                        <label>Forwarded Authority</label>
+                                        <select class="form-control select-status" name="forwarded">
+                                            <option value="1" <?php echo $forwarded === '1'? "selected":"";?> >No</option>
+                                            <option value="2"  <?php echo $forwarded === '2'? "selected":"";?> >Yes</option>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="col-md-2 col-sm-12">

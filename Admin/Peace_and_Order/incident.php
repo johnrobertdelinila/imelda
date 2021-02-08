@@ -39,6 +39,7 @@
                                     <th scope="col">Date Reported</th>
                                     <th scope="col">Date occurred</th>                                    
                                     <th scope="col" class="text-center">Status</th>
+                                    <th scope="col" class="text-center">Forwarded</th>
                                     <th scope="col" class="text-center">Edit</th>
                                 </tr>
                             </thead>
@@ -92,6 +93,12 @@
                                                 $status = 'Settled';
                                             }
 
+                                            if($row['forwarded'] == '2' || $row['forwarded'] == 2){
+                                                $forwarded = 'Yes';
+                                            }elseif($row['status'] == '1' || $row['forwarded'] == 1){
+                                                $forwarded = 'Not yet';
+                                            }
+
                                             if($row['blotterType_id'] == 2){
                                                 $blotterType = 'Incident';
                                             }else{
@@ -109,6 +116,7 @@
                                                             <td>'.$incident_occurred.'</td>
                                                             
                                                             <td class="text-center">'.$status.'</td>
+                                                            <td class="text-center">'.$forwarded.'</td>
                                                             <td class="text-center">
                                                                 <a style="margin-bottom: 10px;" class="'. ($status == "Settled" ? "isDisabled" : "") .' btn btn-sm btn-primary" href="new_person.php?case='.$row['incident_id'].'"><i class="'. ($status == "Settled" ? "ti-unlink" : "ti-plus") .'"></i>     New Person Involve</a>
                                                                 <a style="margin-bottom: 10px;" class="btn btn-sm btn-primary" href="involve_person.php?case='.$row['incident_id'].'"><i class="ti-eye"></i>     View Person Involves</a>
@@ -141,6 +149,12 @@
                                                 }elseif($row['status'] == '2'){
                                                     $status = 'Settled';
                                                 }
+
+                                                if($row['forwarded'] == '2' || $row['forwarded'] == 2){
+                                                    $forwarded = 'Yes';
+                                                }elseif($row['status'] == '1' || $row['forwarded'] == 1){
+                                                    $forwarded = 'Not yet';
+                                                }
                                                 
                                                 echo    '<tr>
                                                             <td>#'.$row['incident_id'].'</td>
@@ -151,6 +165,7 @@
                                                             <td>'.$date_reported.'</td>
                                                             <td>'.$incident_occurred.'</td>
                                                             <td class="text-center">'.$status.'</td>
+                                                            <td class="text-center">'.$forwarded.'</td>
                                                             <td class="text-center">
                                                                 <a style="margin-bottom: 10px;"  class="'. ($status == "Settled" ? "isDisabled" : "") .' btn btn-sm btn-primary" href="new_person.php?case='.$row['incident_id'].'"><i class="'. ($status == "Settled" ? "ti-unlink" : "ti-plus") .'"></i>     New Person Involve</a>
                                                                 <a style="margin-bottom: 10px;" class="btn btn-sm btn-primary" href="involve_person.php?case='.$row['incident_id'].'"><i class="ti-eye"></i>     View Persons Involve</a>

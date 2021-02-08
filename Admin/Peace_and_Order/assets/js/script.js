@@ -671,6 +671,7 @@ $(function() {
             var action = $('button[name=save]').val();
             var dataId = $('button[name=save]').data('id');
             var status = $('select[name=status]').val();
+            var forwarded = $('select[name=forwarded]').val();
 
             var y = $("input:checked").val();
             var x = document.getElementById("case_input");
@@ -682,7 +683,7 @@ $(function() {
 
             if(action === 'insert'){
                 insert(blotter_type,resident_id,resident_idOffender,type,typeOffender,name,contact_number,gender,birthday, address,offender_name,offender_gender,offender_address,offender_description,incident_type,incident_title,date,time, 
-                    incident_location, narrative, settlement);    
+                    incident_location, narrative, settlement, forwarded);    
             }
 
             if(action === 'update'){
@@ -712,10 +713,12 @@ $(function() {
                         'incident_location': incident_location,
                         'narrative': narrative,
                         'settlement': settlement,
+                        'forwarded': forwarded,
 
                         'function': 'updateIncident',
                         'data_id': dataId,
                         'status': status,
+                        
                     },
                     success: function (data){
                         if(data == 'success'){
@@ -778,7 +781,9 @@ $(function() {
 
     });
 
-    function insert(blotterType,residentId,residentIdOffender,Type,TypeOffender,Name,contactNumber,Gender,Birthday, Address,offenderName,offenderGender,offenderAddress,offenderDescription,incidentType,incidentTitle,DateHappened,Time, incidentLocation, Narrative, settlement){
+    function insert(blotterType,residentId,residentIdOffender,Type,TypeOffender,Name,contactNumber,Gender,Birthday, Address,
+        offenderName,offenderGender,offenderAddress,offenderDescription,incidentType,incidentTitle,DateHappened,Time, 
+        incidentLocation, Narrative, settlement, forwarded){
         $.ajax({
             method: 'POST',
             url: 'lib/class.controller.php',
@@ -805,7 +810,8 @@ $(function() {
                 'incident_location': incidentLocation,
                 'narrative': Narrative,
                 'settlement': settlement,
-                'function': 'insertIncident',
+                'forwarded': forwarded,
+                'function': 'insertIncident'
             },
             success: function (data){
                 if(data == 'success'){
