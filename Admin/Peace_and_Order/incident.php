@@ -63,7 +63,7 @@
                                                         $offenderNames[] = $offender['offender_name'];
                                                     }else{
                                                         $offenderDetails = $systems->getResidentDetails($offender['off_res_ID']);
-                                                        $offenderNames[] = $offenderDetails[0]['res_lName'].' '.$offenderDetails[0]['res_fName'].' '.$offenderDetails[0]['suffix'];
+                                                        $offenderNames[] = $offenderDetails[0]['res_lName'].' '.$offenderDetails[0]['res_fName'];
                                                     }
                                                 }
                                                 $offenderName = implode(" , ",$offenderNames);
@@ -159,7 +159,7 @@
                                                 echo    '<tr>
                                                             <td>#'.$row['incident_id'].'</td>
                                                             <td>'.$blotterType.'</td>
-                                                            <td>'.$res[0]['res_fName'].' '.$res[0]['res_lName'].','.$res[0]['res_mName'].''.$res[0]['suffix'].'</td>
+                                                            <td>'.$res[0]['res_fName'].' '.$res[0]['res_lName'].','.$res[0]['res_mName'].'</td>
                                                             <td>'.$offenderName.'</td>
                                                             <td>Resident</td>
                                                             <td>'.$date_reported.'</td>

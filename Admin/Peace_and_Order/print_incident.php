@@ -43,7 +43,7 @@ if(isset($_GET['print']) && $_GET['print'] !== ""){
             $data_offender .= "<table>
                 <tr> 
                     <td colspan=\"2\">
-                        <h3>Offender</h3>
+                        <h3>Respondent</h3>
                     </td>
                 </tr>
                 <tr> 
@@ -261,13 +261,12 @@ $layout="
                         <tr>
                             <td>
                                 <div class=\"text-center prepared-by\">
-                                    <span>$full_name</span>
-                                    <span>Inputed & Printed By</span>
+                                    <span>$full_name<br>Inputed & Printed By</span>
                                 </div>
                             </td>
                             <td>
                                 <div class=\"text-center barangay-cap-sign\">
-                                    <span>Barangay Captain<span>
+                                    <span>Eduardo T Soriano<br>Barangay Captain<span>
                                 </div>
                             </td>
                         </tr>
