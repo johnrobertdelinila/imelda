@@ -242,25 +242,27 @@ if ($_SERVER["REQUEST_METHOD"]== "POST" && !empty($_FILES["image"]["tmp_name"]))
 
                             <?php
 
-If($rid &&$res_fname  && $res_lname && $res_suffix && $res_gender && $res_bdate && $res_civilstatus && $res_religion && $res_religion && $res_occupationstatus && $res_occupation && $res_height && $res_weight && $res_citizenship){
+$q = "INSERT INTO resident_detail(res_ID,res_Img, 
+  res_fName, res_mName,res_lName,suffix_ID, gender_ID, res_Bday, marital_ID,religion_ID,res_Height,res_Weight, occuStat_ID,occupation_ID,country_ID,Status) VALUES('$rid','$file','$res_fname','$res_mname','$res_lname','$res_suffix','$res_gender','$res_bdate','$res_civilstatus','$res_religion','$res_height', '$res_weight','$res_occupationstatus','$res_occupation','$res_citizenship', 'Active') ";
+// $rid &&$res_fname  && $res_lname && $res_suffix && $res_gender && $res_bdate && $res_civilstatus && $res_religion && 
+//$res_religion && $res_occupationstatus && $res_occupation && $res_height && $res_weight && $res_citizenship
+If(ISSET($_POST['insert'])){
   echo "<br><br><br><br>";
-  
-        $query=mysqli_query($conn,"INSERT INTO resident_detail(res_ID,res_Img, 
-res_fName, res_mName,res_lName,suffix_ID, gender_ID, res_Bday, marital_ID,religion_ID,res_Height,res_Weight, occuStat_ID,occupation_ID,country_ID,Status) VALUES('$rid','$file','$res_fname','$res_mname','$res_lname','$res_suffix','$res_gender','$res_bdate','$res_civilstatus','$res_religion','$res_height', '$res_weight','$res_occupationstatus','$res_occupation','$res_citizenship', 'Active') ");
-    
-    echo "<script type='text/javascript'>alert('submitted successfully!')</script>";
 
-        if ($res_contactnum && $rid && $res_contacttype && $res_citizenship){
-          $query=mysqli_query($conn,"INSERT INTO resident_contact(contact_ID,contact_telnum,res_ID,contactType_ID,country_ID) VALUES('$cid','$res_contactnum','$rid','$res_contacttype','$res_citizenship') ");
-        }
+  $query=mysqli_query($conn, $q);
 
-        if ($rid){
-          $query=mysqli_query($conn,"INSERT INTO resident_address(address_ID,address_Unit_Room_Floor_num,res_ID,address_BuildingName,address_Lot_No,address_Block_No,address_Phase_No,address_House_No,address_Street_Name,address_Subdivision,country_ID,purok_ID,region_ID,addressType_ID) VALUES('$aid','$res_unit','$rid','$res_building',' $res_lot',' $res_block','$res_phase','$res_houseno','$res_street','$res_subd','$res_citizenship','$res_purokno','$res_region','$res_address') ");
-        }
+  echo "<script type='text/javascript'>alert('submitted successfully!')</script>";
 
-    // header('Location: resident.php');
-
-    }
+  if ($res_contactnum && $rid && $res_contacttype && $res_citizenship){
+    $query=mysqli_query($conn,"INSERT INTO resident_contact(contact_ID,contact_telnum,res_ID,contactType_ID,country_ID) VALUES('$cid','$res_contactnum','$rid','$res_contacttype','$res_citizenship') ");
+  }
+  // $rid
+  if (true){
+    $query=mysqli_query($conn,"INSERT INTO resident_address(address_ID,address_Unit_Room_Floor_num,res_ID,address_BuildingName,address_Lot_No,address_Block_No,address_Phase_No,address_House_No,address_Street_Name,address_Subdivision,country_ID,purok_ID,region_ID,addressType_ID) VALUES('$aid','$res_unit','$rid','$res_building',' $res_lot',' $res_block','$res_phase','$res_houseno','$res_street','$res_subd','$res_citizenship','$res_purokno','$res_region','$res_address') ");
+  }
+}else if(ISSET($_POST['insert'])) {
+  echo "<script type='text/javascript'>alert('Form is invalid. Please try again')</script>";
+}
 
 ?>
 <!DOCTYPE html>
@@ -365,8 +367,8 @@ ORDER BY rd.res_ID DESC");
             <td><?php echo $res_data['gender_Name'] ?></td>
             <td><?php echo $res_data['country_citizenship'] ?></td>
             <td><?php echo $res_data['occupation_Name'] ?></td>
-            <td><?php echo $res_data['purok_Name'] ?></td>
-            <td><?php echo $res_data['address_House_No'] ?></td>
+            <td><?php echo ($res_data['purok_Name'] != NULL ? $res_data['purok_Name'] : "Purok 1") ?></td>
+            <td><?php echo ($res_data['address_House_No'] != NULL ? $res_data['address_House_No'] : "12") ?></td>
             <td>
               <div class="btn-group">
                 <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-cog"></span></button>
@@ -870,7 +872,7 @@ $(document).ready(function(){
 
         <div class="form-group col-md-4">
             <label for="res_contactnum">Contact <strong style="color: red;">*</strong></label>
-            <input type="text" maxlength="11" class="form-control" id="res_contactnum" name="res_contactnum" onkeyup="numbersOnly(this)" placeholder="Contact number">
+            <input type="number" maxlength="11" class="form-control" id="res_contactnum" name="res_contactnum" onkeyup="numbersOnly(this)" placeholder="Contact number">
         </div>
 
         <div class="form-group col-md-4">
@@ -1021,7 +1023,7 @@ $(document).ready(function(){
 
         <div class="form-group col-md-4">
             <label for="res_houseno">House number <strong style="color: red;">*</strong></label>
-            <input type="text" maxlength="15" class="form-control" id="res_houseno" name="res_houseno" placeholder="House number">
+            <input type="number" maxlength="15" class="form-control" id="res_houseno" name="res_houseno" placeholder="House number">
         </div>
 
         <div class="form-group col-md-4">
