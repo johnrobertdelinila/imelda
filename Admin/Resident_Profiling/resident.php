@@ -359,7 +359,7 @@ ORDER BY rd.res_ID DESC");
            ?>
            <tr>
             <td><?php echo $res_data['res_ID'] ?></td>
-            <td><?php echo $res_data['res_fName']." ".$res_data['res_mName'].". ".$res_data['res_lName']." ".$suffix ?></td>
+            <td><?php echo ucwords($res_data['res_fName']." ".$res_data['res_mName'].". ".$res_data['res_lName']) ?></td>
             <td><?php echo $res_data['age'] ?></td>
             <td><?php echo $res_data['Age_Stage'] ?></td>
             <td><?php echo $res_data['gender_Name'] ?></td>

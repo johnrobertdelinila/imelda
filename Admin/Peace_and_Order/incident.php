@@ -168,7 +168,7 @@
                                                             <td class="text-center">'.$forwarded.'</td>
                                                             <td class="text-center">
                                                                 <a style="margin-bottom: 10px;"  class="'. ($status == "Settled" ? "isDisabled" : "") .' btn btn-sm btn-primary" href="new_person.php?case='.$row['incident_id'].'"><i class="'. ($status == "Settled" ? "ti-unlink" : "ti-plus") .'"></i>     New Person Involve</a>
-                                                                <a style="margin-bottom: 10px;" class="btn btn-sm btn-primary" href="involve_person.php?case='.$row['incident_id'].'"><i class="ti-eye"></i>     View Persons Involve</a>
+                                                                <a style="margin-bottom: 10px;" class="btn btn-sm btn-primary" href="involve_person.php?case='.$row['incident_id'].'&settled='.($status == "Settled" ? "true" : "").'"><i class="ti-eye"></i>     View Persons Involve</a>
                                                                 <a style="margin-bottom: 10px;" href="update_incident.php?edit='.$row['incident_id'].'" class="'. ($status == "Settled" ? "isDisabled" : "") .' btn-warning btn btn-sm primary-action"><i class="'. ($status == "Settled" ? "ti-unlink" : "ti-pencil-alt") .'"></i>    Edit</a>
                                                                 <a style="margin-bottom: 10px;" class="btn btn-sm btn-success" href="print_incident.php?print='.$row['incident_id'].'"><i class="ti-printer"></i>     Print</a>
                                                                     
