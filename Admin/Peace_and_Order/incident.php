@@ -171,7 +171,7 @@
                                                                 <a style="margin-bottom: 10px;" class="btn btn-sm btn-primary" href="involve_person.php?case='.$row['incident_id'].'&settled='.($status == "Settled" ? "true" : "").'"><i class="ti-eye"></i>     View Persons Involve</a>
                                                                 <a style="margin-bottom: 10px;" href="update_incident.php?edit='.$row['incident_id'].'" class="'. ($status == "Settled" ? "isDisabled" : "") .' btn-warning btn btn-sm primary-action"><i class="'. ($status == "Settled" ? "ti-unlink" : "ti-pencil-alt") .'"></i>Edit</a>
                                                                 <a style="margin-bottom: 10px;" class="btn btn-sm btn-success" href="print_incident.php?print='.$row['incident_id'].'"><i class="ti-printer"></i>     Print</a>
-                                                                <a style="margin-bottom: 10px;" class="btn btn-sm btn-info" href="#"><i class="ti-write"></i>     History</a> 
+                                                                <a style="margin-bottom: 10px;" class="btn btn-sm btn-info" href="#" data-toggle="modal" data-target="#history"><i class="ti-write"></i>     History</a> 
                                                             </td>
                                                         </tr>
                                                         ';
@@ -186,6 +186,55 @@
             </div>
         </div>
     </section>
+
+    <div id="history" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-lg">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+            <div class="modal-header  bg-info">
+                <h4 class="modal-title" style="color: white;">History</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+
+                <div class="col-md-6 col-sm-12">
+                    <div class="form-group">
+                        <label>Start Date</label>
+                        <input type="text" value="" class="form-control" >
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-sm-12">
+                    <div class="form-group">
+                        <label>End Date</label>
+                        <input type="text" value="" class="form-control" >
+                    </div>
+                </div>
+
+                <div class="col-md-8 col-sm-12">
+                    <div class="form-group">
+                        <label>People Involves</label>
+                        <input type="text" value="" class="form-control" >
+                    </div>
+                </div>
+
+                <div class="col-md-8 col-sm-12">
+                    <div class="form-group">
+                        <label>Narrative</label>
+                        <textarea style="height:250px!important;" class="form-control" name="narrative" id=""></textarea>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Update</button>
+            </div>
+            </div>
+
+        </div>
+    </div>
+
 </div>
     
 <?php include('inc/footer.php');?>
