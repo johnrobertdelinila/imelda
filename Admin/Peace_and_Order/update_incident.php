@@ -365,11 +365,18 @@
                                         <input type="text" value="<?php echo $location?>" class="form-control" name="incident_location" id="">
                                     </div>       
                                 </div>
-                                <div class="col-md-12 col-sm-12">
+
+                                <div class="col-md-12 col-sm-12" style="display: none;">
                                     <div class="form-group">
                                         <label>Narrative</label>
                                         <textarea style="height:250px!important;" class="form-control" name="narrative" id=""><?php echo $narrative?></textarea>
                                     </div>       
+                                </div>
+
+                                <div class="col-md-12 col-sm-12">
+                                    <div class="form-group">
+                                            <a href="#" data-toggle="modal" data-target="#narrative">SHOW NARRATIVE</a> 
+                                    </div> 
                                 </div>
                                 
                                 <div class="col-md-12 col-sm-12 settlement-container" style="<?php ($status === '1' || $status === null || !ISSET($status) ? '' : 'display:none;') ?>">
@@ -389,6 +396,34 @@
                 </div>
             </div>
         </div>
+
+        <div id="narrative" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-lg">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+            <div class="modal-header  bg-info">
+                <h4 class="modal-title" style="color: white;">History</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+
+                <div class="col-md-8 col-sm-12">
+                    <div class="form-group">
+                        <label>Narrative</label>
+                        <textarea style="height:250px!important;" class="form-control" name="narrative"><?php echo $narrative?></textarea>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+            </div>
+
+        </div>
+    </div>
+
     </section>
 </div>
     

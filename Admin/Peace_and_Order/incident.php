@@ -197,7 +197,6 @@
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body">
-
                 <div class="col-md-6 col-sm-12">
                     <div class="form-group">
                         <label>Start Date</label>
@@ -228,7 +227,7 @@
 
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Update</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Update History</button>
             </div>
             </div>
 
