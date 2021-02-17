@@ -185,54 +185,58 @@
                 </div>
             </div>
         </div>
-    </section>
 
-    <div id="history" class="modal fade" role="dialog">
-        <div class="modal-dialog modal-lg">
 
-            <!-- Modal content-->
-            <div class="modal-content">
-            <div class="modal-header  bg-info">
-                <h4 class="modal-title" style="color: white;">History</h4>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
-            <div class="modal-body">
-                <div class="col-md-6 col-sm-12">
-                    <div class="form-group">
-                        <label>Start Date</label>
-                        <input type="text" value="" class="form-control" >
+        <div id="history" class="modal fade" role="dialog">
+            <div class="modal-dialog modal-lg">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header  bg-info">
+                        <h4 class="modal-title" style="color: white;">History</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
                     </div>
+                    <form method="POST" action="" id="form_history">
+                        <div class="modal-body">
+                            <div class="col-md-6 col-sm-12">
+                                <div class="form-group">
+                                    <label>Start Date</label>
+                                    <input type="text" value="<?php echo (ISSET($_SESSION['his_start_date']) ? $_SESSION['his_start_date'] : '') ?>" name="start_date" class="form-control" >
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 col-sm-12">
+                                <div class="form-group">
+                                    <label>End Date</label>
+                                    <input type="text" value="<?php echo (ISSET($_SESSION['his_end_date']) ? $_SESSION['his_end_date'] : '') ?>" name="end_date" class="form-control" >
+                                </div>
+                            </div>
+
+                            <div class="col-md-8 col-sm-12">
+                                <div class="form-group">
+                                    <label>People Involves</label>
+                                    <input type="text" value="<?php echo (ISSET($_SESSION['his_peoples']) ? $_SESSION['his_peoples'] : '') ?>" name="peoples" class="form-control" >
+                                </div>
+                            </div>
+
+                            <div class="col-md-12 col-sm-12">
+                                <div class="form-group">
+                                    <label>Narrative</label>
+                                    <textarea style="height:250px!important;" class="form-control" name="narrative"><?php echo (ISSET($_SESSION['his_narrative']) ? $_SESSION['his_narrative'] : '') ?></textarea>
+                                </div>
+                            </div>
+                                
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" id="btn_history" name="submit" class="btn btn-danger" data-dismiss="modal">Update History</button>
+                        </div>
+                    </form> 
                 </div>
 
-                <div class="col-md-6 col-sm-12">
-                    <div class="form-group">
-                        <label>End Date</label>
-                        <input type="text" value="" class="form-control" >
-                    </div>
-                </div>
-
-                <div class="col-md-8 col-sm-12">
-                    <div class="form-group">
-                        <label>People Involves</label>
-                        <input type="text" value="" class="form-control" >
-                    </div>
-                </div>
-
-                <div class="col-md-12 col-sm-12">
-                    <div class="form-group">
-                        <label>Narrative</label>
-                        <textarea style="height:250px!important;" class="form-control" name="narrative" id=""></textarea>
-                    </div>
-                </div>
-
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Update History</button>
-            </div>
-            </div>
-
         </div>
-    </div>
+
+    </section>
 
 </div>
     
@@ -246,6 +250,19 @@
                 method: 'POST',
                 data: {val: val},
                 success: (data) => {window.open('incident.php', 'FraDisplay');}
+            })
+        });
+
+        $(document).on('click', '#btn_history', function(e) {
+            var data = {};
+            $("#form_history").serializeArray().map(function(x){data[x.name] = x.value;});
+            $.ajax({
+                url: 'set_history.php',
+                method: 'POST',
+                data: data,
+                success: (data) => {
+                    window.open('incident.php', 'FraDisplay');
+                }
             })
         });
     });
