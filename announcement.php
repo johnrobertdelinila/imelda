@@ -68,13 +68,12 @@ if(isset($_SESSION['user_session']))
                 LEFT JOIN ref_position rp  ON rp.position_ID = ar.receiver_ID ORDER BY ar.ann_ID DESC");
                 while ($ann = mysqli_fetch_array($sql)) {
             ?>
-                <div class="box effect1">
+                <div class="box effect1" style="border-radius: 25px; background-color: #FAFAFA">
                     <p><?php echo strtoupper($ann[2])."[ ".$ann[6]." ] (".date("M jS, Y", strtotime($ann[5])).")";?></p> <button class="pull-right" style="margin-top: -20px;"><span class="glyphicon glyphicon-edit"></span></button>
                     <hr>
-                    <p style=" text-indent: 50px; white-space: nowrap; 
-                        overflow: hidden;
-                        text-overflow: ellipsis;"><?php echo ucwords($ann[3]) ?>
-                    </p>
+                    <p style=" text-indent: 50px; white-space: nowrap; font-size: 14px; font-style: italic;
+                      overflow: hidden;
+                      text-overflow: ellipsis;"><?php echo ucwords($ann[3]) ?></p>
 
                     
                 </div>

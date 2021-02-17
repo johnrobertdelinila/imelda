@@ -72,7 +72,7 @@ if(isset($_GET['case']) && $_GET['case'] !== ""){
                     <td>
                         <a href='edit_person.php?id=$off_id&case=$case_no&person_type=offender' class='btn btn-sm btn-warning ". ($isSettled == 'true' ? 'isDisabled' : '' ) ."'>Edit details</a>
                         <a href='../Clearance_and_Forms/Clearances/BusinessPermit.php?offender=$offender_name&complainant=$name&issue=$incident_title' class=\"btn btn-sm btn-success\">Summon</a>
-                        <a href='remove_person.php?id=$off_id&case=$case_no&person_type=offender' class=\"btn btn-sm btn-danger\">Remove</a>
+                        <a href='remove_person.php?id=$off_id&case=$case_no&person_type=offender' class=\"btn btn-sm btn-danger\">Archive</a>
                     </td>
                 </tr>";
         }
@@ -124,7 +124,7 @@ if(isset($_GET['case']) && $_GET['case'] !== ""){
                                             </td>
                                             <td>
                                                 <a href='edit_person.php?id=$comp_id&case=$case_no&person_type=complainant' class='btn btn-sm btn-warning ". ($isSettled == 'true' ? 'isDisabled' : '' ) ."'>Edit details</a>
-                                                <a href='remove_person.php?id=$comp_id&case=$case_no&person_type=complainant' class=\"btn btn-sm btn-danger\">Remove</a>
+                                                <a href='remove_person.php?id=$comp_id&case=$case_no&person_type=complainant' class=\"btn btn-sm btn-danger\">Archive</a>
                                             </td>
                                         </tr>";
         }

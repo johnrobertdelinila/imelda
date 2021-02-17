@@ -403,12 +403,12 @@
             <!-- Modal content-->
             <div class="modal-content">
             <div class="modal-header  bg-info">
-                <h4 class="modal-title" style="color: white;">History</h4>
+                <h4 class="modal-title" style="color: white;">Narrative Tab</h4>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body">
 
-                <div class="col-md-8 col-sm-12">
+                <div class="col-md-12 col-sm-12">
                     <div class="form-group">
                         <label>Narrative</label>
                         <textarea style="height:250px!important;" class="form-control" name="narrative"><?php echo $narrative?></textarea>
