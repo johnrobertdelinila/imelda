@@ -31,7 +31,7 @@ if(!isset($login_session)){
 <div class="container" style="margin-top:120px;">
 <?php 
 $sql = mysqli_query($conn,"SELECT ar.*,rp.position_Name FROM `anouncement_raw` ar
-LEFT JOIN ref_position rp  ON rp.position_ID = ar.receiver_ID");
+LEFT JOIN ref_position rp  ON rp.position_ID = ar.receiver_ID ORDER BY ar.ann_ID DESC");
 while ($ann = mysqli_fetch_array($sql)) {
  ?>
 <div class="box effect1" style="border-radius: 25px; background-color: #FAFAFA">

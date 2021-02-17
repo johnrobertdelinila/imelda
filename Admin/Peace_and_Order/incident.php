@@ -218,7 +218,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-8 col-sm-12">
+                <div class="col-md-12 col-sm-12">
                     <div class="form-group">
                         <label>Narrative</label>
                         <textarea style="height:250px!important;" class="form-control" name="narrative" id=""></textarea>
