@@ -73,7 +73,7 @@ $_SESSION['ff'] = $fd1."-".$fm1."-".$fy1;
     <br>
    
        
-         <font face="Gordana" size="3"><input type="text" name="barangaychairman" value="<?php echo $_SESSION['captain']; ?>"><br>
+         <font face="Gordana" size="3"><input type="text" name="barangaychairman" value="Eduardo T Soriano"><br>
              <label> BARANGAY CAPTAIN</label>
         </p>
          <br>
